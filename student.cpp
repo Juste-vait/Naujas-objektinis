@@ -11,6 +11,7 @@ Studentas::Studentas(istream& is) {
     readStudent(is);
 }
 
+// Įvedimo funkcija
 istream& Studentas::readStudent(istream& is) {
     is >> vardas_ >> pavarde_;
 
@@ -41,13 +42,13 @@ void Studentas::skaiciuotiGalutinius() {
 
 double Studentas::skaiciuotiVidurki(const vector<int>& pazymiai) {
     if (pazymiai.empty()) return 0.0;
-    double suma = std::accumulate(pazymiai.begin(), pazymiai.end(), 0);
+    double suma = accumulate(pazymiai.begin(), pazymiai.end(), 0);
     return suma / pazymiai.size();
 }
 
 double Studentas::skaiciuotiMediana(vector<int> pazymiai) {
     if (pazymiai.empty()) return 0.0;
-    std::sort(pazymiai.begin(), pazymiai.end());
+    sort(pazymiai.begin(), pazymiai.end());
     size_t n = pazymiai.size();
     return (n % 2 == 0) ? (pazymiai[n / 2 - 1] + pazymiai[n / 2]) / 2.0 : pazymiai[n / 2];
 }
@@ -58,8 +59,13 @@ ostream& operator<<(ostream& os, const Studentas& s) {
     return os;
 }
 
+// Input operatorius
+istream& operator>>(istream& is, Studentas& s) {
+    return s.readStudent(is);
+}   
+
 // Palyginimo funkcijos
-bool compare(const Studentas& a, const Studentas& b) {
+bool comparePagalVarda(const Studentas& a, const Studentas& b) {
     return a.vardas() < b.vardas();
 }
 
@@ -67,10 +73,10 @@ bool comparePagalPavarde(const Studentas& a, const Studentas& b) {
     return a.pavarde() < b.pavarde();
 }
 
-bool comparePagalEgza(const Studentas& a, const Studentas& b) {
+bool comparePagalVid(const Studentas& a, const Studentas& b) {
     return a.galutinisVid() < b.galutinisVid(); 
 }
 
-std::istream& operator>>(istream& is, Studentas& s) {
-    return s.readStudent(is);
-}   
+bool comparePagalMed(const Studentas& a, const Studentas& b) {
+    return a.galutinisMed() < b.galutinisMed(); 
+}

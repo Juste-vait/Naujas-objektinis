@@ -16,13 +16,14 @@ using namespace std::chrono;
 
 class Studentas {
 private:
-    string vardas_;
-    string pavarde_;
+
     vector<int> namuDarbai_;
     int egzaminas_;
 
 
 public:
+    string vardas_;
+    string pavarde_;
     double galutinisVid_;
     double galutinisMed_;
 
@@ -103,6 +104,63 @@ void nuskaitytiIsFailo(konteineris &studentai) {
     cout << "Duomenų nuskaitymas užtruko: " << duration_cast<seconds>(end - start).count() << " s\n" << endl;
 }
 
+template <typename konteineris>
+void rusiuotiStudentus(konteineris &studentai){
+    int rusiavimoPasirinkimas;
+
+    while (true) {
+        try {
+            cout << "Pasirinkite rikiavimo būdą:\n";
+            cout << "1 - Pagal vardą (A-Z)\n";
+            cout << "2 - Pagal pavardę (A-Z)\n";
+            cout << "3 - Pagal galutinį vidurkį\n";
+            cout << "4 - Pagal galutinę medianą\n";
+            cout << "Jūsų pasirinkimas: ";
+            cin >> rusiavimoPasirinkimas;
+
+            if (cin.fail()) {
+                throw invalid_argument("Neteisinga įvestis! Įveskite tik skaičių.");
+            }
+            if (rusiavimoPasirinkimas < 1 || rusiavimoPasirinkimas > 4) {
+                throw out_of_range("Pasirinkimas turi būti nuo 1 iki 4.");
+            }
+            break;
+        }
+        catch (const exception &e) {
+            cout << e.what() << " Bandykite dar kartą.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
+
+    auto start1 = steady_clock::now();
+
+    switch (rusiavimoPasirinkimas) {
+        case 1:
+            std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
+                return a.vardas_ < b.vardas_;
+            });
+            break;
+        case 2:
+            std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
+                return a.pavarde_ < b.pavarde_;
+            });
+            break;
+        case 3:
+            std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
+                return a.galutinisVid_ < b.galutinisVid_;
+            });
+            break;
+        case 4:
+            std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
+                return a.galutinisMed_ < b.galutinisMed_;
+            });
+            break;
+    }
+    
+    auto end1 = steady_clock::now();
+    cout << "Rikiavimas užtruko: " << duration_cast<seconds>(end1 - start1).count() << " s\n" << endl;
+}
 
 template <typename konteineris>
 void strategija_3(konteineris& studentai, konteineris& nuskriaustukai) {
@@ -149,66 +207,5 @@ void strategija_3(konteineris& studentai, konteineris& nuskriaustukai) {
 
     cout << "3 strategija: " << duration_cast<seconds>(end - start).count() << " s" << endl;
 }
-
-
-/*
-template <typename konteineris>
-void rusiuotiStudentus(konteineris &studentai){
-    int rusiavimoPasirinkimas;
-
-    while (true) {
-        try {
-            cout << "Pasirinkite rikiavimo būdą:\n";
-            cout << "1 - Pagal vardą (A-Z)\n";
-            cout << "2 - Pagal pavardę (A-Z)\n";
-            cout << "3 - Pagal galutinį vidurkį\n";
-            cout << "4 - Pagal galutinę medianą\n";
-            cout << "Jūsų pasirinkimas: ";
-            cin >> rusiavimoPasirinkimas;
-
-            if (cin.fail()) {
-                throw invalid_argument("Neteisinga įvestis! Įveskite tik skaičių.");
-            }
-            if (rusiavimoPasirinkimas < 1 || rusiavimoPasirinkimas > 4) {
-                throw out_of_range("Pasirinkimas turi būti nuo 1 iki 4.");
-            }
-            break;
-        }
-        catch (const exception &e) {
-            cout << e.what() << " Bandykite dar kartą.\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-    }
-
-    auto start1 = steady_clock::now();
-
-    switch (rusiavimoPasirinkimas) {
-        case 1:
-            std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.vardas < b.vardas;
-            });
-            break;
-        case 2:
-            std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.pavarde < b.pavarde;
-            });
-            break;
-        case 3:
-            std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.galutinisVid < b.galutinisVid;
-            });
-            break;
-        case 4:
-            std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.galutinisMed < b.galutinisMed;
-            });
-            break;
-    }
-    
-    auto end1 = steady_clock::now();
-    cout << "Rikiavimas užtruko: " << duration_cast<seconds>(end1 - start1).count() << " s\n" << endl;
-}
-*/
 
 #endif
