@@ -12,13 +12,24 @@ Studentas::Studentas(std::istream& is) {
 }
 
 istream& Studentas::readStudent(std::istream& is) {
-    is >> vardas_ >> pavarde_ >> egzaminas_;
+    is >> vardas_ >> pavarde_;
+
     namuDarbai_.clear();
+
     int pazymys;
+
     while (is >> pazymys) {
         namuDarbai_.push_back(pazymys);
     }
-    is.clear(); 
+    is.clear();
+
+    if (!namuDarbai_.empty()) {
+        egzaminas_ = namuDarbai_.back();
+        namuDarbai_.pop_back();
+    }
+
+    skaiciuotiGalutinius();
+
     return is;
 }
 
