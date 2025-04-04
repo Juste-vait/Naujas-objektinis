@@ -205,7 +205,32 @@ void strategija_3(konteineris& studentai, konteineris& nuskriaustukai) {
         studentai.shrink_to_fit();
     }
 
-    cout << "3 strategija: " << duration_cast<seconds>(end - start).count() << " s" << endl;
+    cout << "3 strategija: " << duration_cast<seconds>(end - start).count() << " s\n" << endl;
+}
+
+template <typename konteineris>
+void isvestiIDuFailus(konteineris& nuskriaustukai, konteineris& studentai){
+    
+    ofstream outNuskriaustukai("nuskriaustukai.txt"), outKietekai("kietekai.txt");
+    if (!outNuskriaustukai || !outKietekai) {
+        cerr << "Nepavyko sukurti rezultatų failų!" << endl;
+        return;
+    }
+
+    outNuskriaustukai << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis (Vid.)" << setw(20) << "Galutinis (Med.)" << endl;
+    outNuskriaustukai << string(70, '-') << endl;
+    outKietekai << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis (Vid.)" << setw(20) << "Galutinis (Med.)" << endl;
+    outKietekai << string(70, '-') << endl;
+
+    for (const auto& stud : nuskriaustukai) {
+        outNuskriaustukai << left << setw(20) << stud.pavarde_ << setw(20) << stud.vardas_ << fixed << setprecision(2) << setw(20) << stud.galutinisVid_ << setw(20) << stud.galutinisMed_ << endl;
+    }
+    for (const auto& stud : studentai) {        
+        outKietekai << left << setw(20) << stud.pavarde_ << setw(20) << stud.vardas_ << fixed << setprecision(2) << setw(20) << stud.galutinisVid_ << setw(20) << stud.galutinisMed_ << endl;
+    }
+
+
+    cout << "Failai \"nuskriaustukai.txt\" ir \"kietekai.txt\" sukurti!" << endl;
 }
 
 #endif
