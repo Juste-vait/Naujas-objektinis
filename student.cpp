@@ -7,11 +7,11 @@
 Studentas::Studentas() : egzaminas_(0), galutinisVid_(0), galutinisMed_(0) {}
 
 // Konstruktorius su įvedimu
-Studentas::Studentas(std::istream& is) {
+Studentas::Studentas(istream& is) {
     readStudent(is);
 }
 
-istream& Studentas::readStudent(std::istream& is) {
+istream& Studentas::readStudent(istream& is) {
     is >> vardas_ >> pavarde_;
 
     namuDarbai_.clear();
@@ -39,13 +39,13 @@ void Studentas::skaiciuotiGalutinius() {
     galutinisMed_ = 0.4 * skaiciuotiMediana(namuDarbai_) + 0.6 * egzaminas_;
 }
 
-double Studentas::skaiciuotiVidurki(const std::vector<int>& pazymiai) {
+double Studentas::skaiciuotiVidurki(const vector<int>& pazymiai) {
     if (pazymiai.empty()) return 0.0;
     double suma = std::accumulate(pazymiai.begin(), pazymiai.end(), 0);
     return suma / pazymiai.size();
 }
 
-double Studentas::skaiciuotiMediana(std::vector<int> pazymiai) {
+double Studentas::skaiciuotiMediana(vector<int> pazymiai) {
     if (pazymiai.empty()) return 0.0;
     std::sort(pazymiai.begin(), pazymiai.end());
     size_t n = pazymiai.size();
@@ -53,8 +53,8 @@ double Studentas::skaiciuotiMediana(std::vector<int> pazymiai) {
 }
 
 // Output operatorius
-std::ostream& operator<<(std::ostream& os, const Studentas& s) {
-    os << std::left << std::setw(20) << s.pavarde_ << std::setw(20) << s.vardas_ << std::fixed << std::setprecision(2) << std::setw(20) << s.galutinisVid_ << std::setw(20) << s.galutinisMed_;
+ostream& operator<<(ostream& os, const Studentas& s) {
+    os << left << setw(20) << s.pavarde_ << setw(20) << s.vardas_ << fixed << setprecision(2) << setw(20) << s.galutinisVid_ << setw(20) << s.galutinisMed_;
     return os;
 }
 
@@ -71,6 +71,6 @@ bool comparePagalEgza(const Studentas& a, const Studentas& b) {
     return a.galutinisVid() < b.galutinisVid(); 
 }
 
-std::istream& operator>>(std::istream& is, Studentas& s) {
+std::istream& operator>>(istream& is, Studentas& s) {
     return s.readStudent(is);
 }   

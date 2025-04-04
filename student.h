@@ -26,7 +26,7 @@ private:
 public:
     // Konstruktoriai
     Studentas();
-    Studentas(std::istream& is);
+    Studentas(istream& is);
 
     // Getteriai (const funkcijos)
     string vardas() const { return vardas_; }
@@ -35,18 +35,18 @@ public:
     double galutinisMed() const { return galutinisMed_; }
 
     // Įvedimo funkcija
-    istream& readStudent(std::istream& is);
+    istream& readStudent(istream& is);
 
     // Galutinio pažymio skaičiavimas
     void skaiciuotiGalutinius();
 
     // Pagalbinės funkcijos
-    static double skaiciuotiVidurki(const std::vector<int>& pazymiai);
-    static double skaiciuotiMediana(std::vector<int> pazymiai);
+    static double skaiciuotiVidurki(const vector<int>& pazymiai);
+    static double skaiciuotiMediana(vector<int> pazymiai);
 
     // Operatoriai
-    friend ostream& operator<<(std::ostream& os, const Studentas& s);
-    friend istream& operator>>(std::istream& is, Studentas& s);
+    friend ostream& operator<<(ostream& os, const Studentas& s);
+    friend istream& operator>>(istream& is, Studentas& s);
 
 };
 
@@ -85,13 +85,13 @@ void nuskaitytiIsFailo(konteineris &studentai) {
     auto start = steady_clock::now();
 
     string eilute;
-    getline(failas, eilute);  // Nuskaitome pirmąją eilutę (antraštę), bet jos nenaudojame
+    getline(failas, eilute);  
 
     while (getline(failas, eilute)) {
         istringstream line(eilute);
         Studentas stud;
         
-        // Naudojame klasės metodą nuskaitymui
+
         stud.readStudent(line);
         
         studentai.push_back(stud); 
@@ -100,8 +100,7 @@ void nuskaitytiIsFailo(konteineris &studentai) {
     failas.close();
 
     auto end = steady_clock::now();
-    cout << "Duomenų nuskaitymas užtruko: " 
-         << duration_cast<seconds>(end - start).count() << " s\n" << endl;
+    cout << "Duomenų nuskaitymas užtruko: " << duration_cast<seconds>(end - start).count() << " s\n" << endl;
 }
 
 #endif

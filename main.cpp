@@ -14,9 +14,9 @@ int main() {
 
     nuskaitytiIsFailo(studentai);
 
-    std::cout << "Rezultatai:\n";
+    cout << "Rezultatai:\n";
     for (const auto& studentas : studentai) {
-        std::cout << studentas << '\n';
+        cout << studentas << '\n';
     } 
 
     return 0;
