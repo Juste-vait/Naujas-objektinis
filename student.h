@@ -51,14 +51,6 @@ public:
 
 };
 
-
-
-// Palyginimo funkcijos
-bool comparePagalVarda(const Studentas& a, const Studentas& b);
-bool comparePagalPavarde(const Studentas& a, const Studentas& b);
-bool comparePagalVid(const Studentas& a, const Studentas& b);
-bool comparePagalMed(const Studentas& a, const Studentas& b);
-
 template <typename konteineris>
 void nuskaitytiIsFailo(konteineris &studentai) {
     string failoPavadinimas;
