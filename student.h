@@ -16,22 +16,20 @@ using namespace std::chrono;
 
 class Studentas {
 private:
-
+    string vardas_;
+    string pavarde_;;
     vector<int> namuDarbai_;
     int egzaminas_;
-
-
-public:
-    string vardas_;
-    string pavarde_;
     double galutinisVid_;
     double galutinisMed_;
+
+public:
 
     // Konstruktoriai
     Studentas();
     Studentas(istream& is);
 
-    // Getteriai (const funkcijos)
+    // Getteriai
     string vardas() const { return vardas_; }
     string pavarde() const { return pavarde_; }
     double galutinisVid() const { return galutinisVid_; }
@@ -138,22 +136,22 @@ void rusiuotiStudentus(konteineris &studentai){
     switch (rusiavimoPasirinkimas) {
         case 1:
             std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.vardas_ < b.vardas_;
+                return a.vardas() < b.vardas();
             });
             break;
         case 2:
             std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.pavarde_ < b.pavarde_;
+                return a.pavarde() < b.pavarde();
             });
             break;
         case 3:
             std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.galutinisVid_ < b.galutinisVid_;
+                return a.galutinisVid() < b.galutinisVid();
             });
             break;
         case 4:
             std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.galutinisMed_ < b.galutinisMed_;
+                return a.galutinisMed() < b.galutinisMed();
             });
             break;
     }
@@ -170,7 +168,7 @@ void strategija_3(konteineris& studentai, konteineris& nuskriaustukai) {
 
     while (true) {
         try {
-            cout << "Pasirinkite pagal ką bus surūšiuoti studentai (V - pagal vidurkį, M - pagal medianą): ";
+            cout << "Pasirinkite pagal ką bus sugrupuoti studentai (V - pagal vidurkį, M - pagal medianą): ";
             cin >> rusiavimoPasirinkimas;
 
             if (rusiavimoPasirinkimas != 'V' && rusiavimoPasirinkimas != 'v' && rusiavimoPasirinkimas != 'M' && rusiavimoPasirinkimas != 'm') {
@@ -190,9 +188,9 @@ void strategija_3(konteineris& studentai, konteineris& nuskriaustukai) {
     
     auto it = partition(studentai.begin(), studentai.end(), [rusiavimoPasirinkimas](const Studentas& stud) {
         if (rusiavimoPasirinkimas == 'V' || rusiavimoPasirinkimas == 'v') {
-            return stud.galutinisVid_ >= 5; 
+            return stud.galutinisVid() >= 5; 
         } else {
-            return stud.galutinisMed_ >= 5;
+            return stud.galutinisMed() >= 5;
         }
     });
     
@@ -223,12 +221,11 @@ void isvestiIDuFailus(konteineris& nuskriaustukai, konteineris& studentai){
     outKietekai << string(70, '-') << endl;
 
     for (const auto& stud : nuskriaustukai) {
-        outNuskriaustukai << left << setw(20) << stud.pavarde_ << setw(20) << stud.vardas_ << fixed << setprecision(2) << setw(20) << stud.galutinisVid_ << setw(20) << stud.galutinisMed_ << endl;
+        outNuskriaustukai << left << setw(20) << stud.pavarde() << setw(20) << stud.vardas() << fixed << setprecision(2) << setw(20) << stud.galutinisVid() << setw(20) << stud.galutinisMed() << endl;
     }
     for (const auto& stud : studentai) {        
-        outKietekai << left << setw(20) << stud.pavarde_ << setw(20) << stud.vardas_ << fixed << setprecision(2) << setw(20) << stud.galutinisVid_ << setw(20) << stud.galutinisMed_ << endl;
+        outKietekai << left << setw(20) << stud.pavarde() << setw(20) << stud.vardas() << fixed << setprecision(2) << setw(20) << stud.galutinisVid() << setw(20) << stud.galutinisMed() << endl;
     }
-
 
     cout << "Failai \"nuskriaustukai.txt\" ir \"kietekai.txt\" sukurti!" << endl;
 }
