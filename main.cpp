@@ -49,49 +49,6 @@ int main() {
             cout << studentas << '\n';
         }
     }
-
-    /*
-
-    // Isvedimas i ekrana
-    cout << "Nuskriaustukai:\n";
-    for (const auto& studentas : nuskriaustukai) {
-        cout << studentas << '\n';
-    } 
-
-    cout << endl;
-
-    cout << "Kietekai:\n";
-    for (const auto& studentas : studentai) {
-        cout << studentas << '\n';
-    }
-
-    // Isvedimas į failus
-    ofstream failasNuskriaustukai("nuskriaustukai.txt");
-    ofstream failasKietekai("kietekai.txt");
-
-    if (!failasNuskriaustukai || !failasKietekai) {
-        cerr << "Klaida atidarant išvesties failus!" << endl;
-        return 1;
-    }
-
-    failasNuskriaustukai << left << setw(20) << "Pavardė" << setw(20) << "Vardas" << setw(20) << "Galutinis (Vid.)" << setw(20) << "Galutinis (Med.)" << endl;
-    failasNuskriaustukai << string(80, '-') << endl;
-
-    for (const auto& studentas : nuskriaustukai) {
-        failasNuskriaustukai << studentas << '\n';
-    }
-
-    failasKietekai << left << setw(20) << "Pavardė" << setw(20) << "Vardas" << setw(20) << "Galutinis (Vid.)" << setw(20) << "Galutinis (Med.)" << endl;
-    failasKietekai << string(80, '-') << endl;
-
-    for (const auto& studentas : studentai) {
-        failasKietekai << studentas << '\n';
-    }
-
-    failasNuskriaustukai.close();
-    failasKietekai.close();
-
-    */
     
     return 0;
 }

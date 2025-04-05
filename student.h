@@ -25,27 +25,22 @@ private:
 
 public:
 
-    // Konstruktoriai
     Studentas();
     Studentas(istream& is);
+    ~Studentas();
 
-    // Getteriai
     string vardas() const { return vardas_; }
     string pavarde() const { return pavarde_; }
     double galutinisVid() const { return galutinisVid_; }
     double galutinisMed() const { return galutinisMed_; }
 
-    // Įvedimo funkcija
     istream& readStudent(istream& is);
 
-    // Galutinio pažymio skaičiavimas
     void skaiciuotiGalutinius();
 
-    // Pagalbinės funkcijos
     static double skaiciuotiVidurki(const vector<int>& pazymiai);
     static double skaiciuotiMediana(vector<int> pazymiai);
 
-    // Operatoriai
     friend ostream& operator<<(ostream& os, const Studentas& s);
     friend istream& operator>>(istream& is, Studentas& s);
 
