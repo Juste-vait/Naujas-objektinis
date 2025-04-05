@@ -95,8 +95,7 @@ void nuskaitytiIsFailo(konteineris &studentai) {
 }
 
 template <typename konteineris>
-void rusiuotiStudentus(konteineris &studentai){
-    int rusiavimoPasirinkimas;
+void rusiuotiStudentus(konteineris &studentai, int rusiavimoPasirinkimas){
 
     while (true) {
         try {
@@ -155,15 +154,15 @@ void rusiuotiStudentus(konteineris &studentai){
 template <typename konteineris>
 void strategija_3(konteineris& studentai, konteineris& nuskriaustukai) {
 
-    char rusiavimoPasirinkimas;
+    char grupavimoPasirinkimas;
     Studentas stud;
 
     while (true) {
         try {
             cout << "Pasirinkite pagal ką bus sugrupuoti studentai (V - pagal vidurkį, M - pagal medianą): ";
-            cin >> rusiavimoPasirinkimas;
+            cin >> grupavimoPasirinkimas;
 
-            if (rusiavimoPasirinkimas != 'V' && rusiavimoPasirinkimas != 'v' && rusiavimoPasirinkimas != 'M' && rusiavimoPasirinkimas != 'm') {
+            if (grupavimoPasirinkimas != 'V' && grupavimoPasirinkimas != 'v' && grupavimoPasirinkimas != 'M' && grupavimoPasirinkimas != 'm') {
                 throw invalid_argument("Neteisinga įvestis! Pasirinkite V arba M.");
             }
 
@@ -173,13 +172,13 @@ void strategija_3(konteineris& studentai, konteineris& nuskriaustukai) {
             cout << e.what() << " Bandykite dar kartą.\n";
             cin.clear(); 
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
-        }
+            }
         }
 
     auto start = steady_clock::now();
     
-    auto it = partition(studentai.begin(), studentai.end(), [rusiavimoPasirinkimas](const Studentas& stud) {
-        if (rusiavimoPasirinkimas == 'V' || rusiavimoPasirinkimas == 'v') {
+    auto it = stable_partition(studentai.begin(), studentai.end(), [grupavimoPasirinkimas](const Studentas& stud) {
+        if (grupavimoPasirinkimas == 'V' || grupavimoPasirinkimas == 'v') {
             return stud.galutinisVid() >= 5; 
         } else {
             return stud.galutinisMed() >= 5;

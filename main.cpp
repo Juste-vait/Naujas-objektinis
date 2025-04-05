@@ -8,15 +8,11 @@ int main() {
     vector<Studentas> nuskriaustukai;
     Studentas s;
     string pasirinkimasIsvesti;
-    /*
-    while (in >> s) {
-        studentai.push_back(s);
-    }
-    */
+    int rusiavimoPasirinkimas;
 
     nuskaitytiIsFailo(studentai);
 
-    rusiuotiStudentus(studentai);
+    rusiuotiStudentus(studentai, rusiavimoPasirinkimas);
 
     strategija_3(studentai, nuskriaustukai);
 
