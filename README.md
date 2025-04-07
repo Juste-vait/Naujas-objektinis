@@ -5,9 +5,10 @@ CPU - Apple M3
 RAM - 16 GB
 SSD - 494,38 GB
 
-2 tyrimaS: su skirtingais optimizavimo flag'ais (O1, O2, O3):
+2 tyrimas: su skirtingais optimizavimo flag'ais (O1, O2, O3):
 
-![2792A302-7A3C-4FAE-8155-DF67DAF636BA](https://github.com/user-attachments/assets/cd966f3e-f8ad-4b12-9b49-f58f0f41b39e)
+![08059C02-3B7B-4ACF-A01E-1BA207F073CA](https://github.com/user-attachments/assets/0ee87292-a971-4f52-ae1d-1fa76a1e5851)
+
 
 
 
@@ -25,7 +26,8 @@ Struktūra pakeista į klasę ir visas kodas atitinkamai pritaikytas. Matuojamas
 
 1 tyrimas: atliktas su dviem failais. Išrinktas geričiausiai veikiantis konteineris ir strategija, palyginti rezultatai senos kodo versijos su struktūra, bei naujos su klase.
 
-![3EE44B8A-8624-4C8D-B2B4-CDA82932BEA4](https://github.com/user-attachments/assets/1c1b65d3-b158-4176-989c-c68c37dccb7f)
+![95FE63C3-18E9-4995-841C-D0FC8DBC0D36](https://github.com/user-attachments/assets/739a30f3-bf8c-4fd7-a686-6eeeff2feb06)
+
 
 
 
