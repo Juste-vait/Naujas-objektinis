@@ -5,10 +5,8 @@
 
 Studentas::Studentas() : egzaminas_(0), galutinisVid_(0), galutinisMed_(0) {}
 
-Studentas::~Studentas() {}
-
-Studentas::Studentas(istream& is) {
-    readStudent(is);
+Studentas::~Studentas() {
+    namuDarbai_.clear();
 }
 
 istream& Studentas::readStudent(istream& is) {

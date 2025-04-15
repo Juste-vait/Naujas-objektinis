@@ -26,7 +26,6 @@ private:
 public:
 
     Studentas();
-    Studentas(istream& is);
     ~Studentas();
 
     string vardas() const { return vardas_; }
@@ -45,6 +44,7 @@ public:
     friend istream& operator>>(istream& is, Studentas& s);
 
 };
+
 
 template <typename konteineris>
 void nuskaitytiIsFailo(konteineris &studentai) {
