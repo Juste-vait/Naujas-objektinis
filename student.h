@@ -36,6 +36,7 @@ public:
     string pavarde() const { return pavarde_; }
     double galutinisVid() const { return galutinisVid_; }
     double galutinisMed() const { return galutinisMed_; }
+    Studentas& operator=(Studentas&& other) noexcept;
 
     istream& readStudent(istream& is);
 

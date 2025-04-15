@@ -26,6 +26,18 @@ Studentas& Studentas::operator=(const Studentas& other) {
 Studentas::Studentas(Studentas&& other) noexcept
     : vardas_(move(other.vardas_)), pavarde_(move(other.pavarde_)), namuDarbai_(move(other.namuDarbai_)), egzaminas_(other.egzaminas_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
       
+Studentas& Studentas::operator=(Studentas&& other) noexcept {
+    if (this != &other) {
+        vardas_ = move(other.vardas_);
+        pavarde_ = move(other.pavarde_);
+        namuDarbai_ = move(other.namuDarbai_);
+        egzaminas_ = other.egzaminas_;
+        galutinisVid_ = other.galutinisVid_;
+        galutinisMed_ = other.galutinisMed_;
+    }
+    return *this;
+}
+
 istream& Studentas::readStudent(istream& is) {
     is >> vardas_ >> pavarde_;
 
