@@ -29,6 +29,7 @@ public:
     ~Studentas();
 
     Studentas(const Studentas& other);
+    Studentas& operator=(const Studentas& other);
 
     string vardas() const { return vardas_; }
     string pavarde() const { return pavarde_; }

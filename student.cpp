@@ -12,6 +12,18 @@ Studentas::Studentas(const Studentas& other)
     : vardas_(other.vardas_), pavarde_(other.pavarde_), namuDarbai_(other.namuDarbai_),
       egzaminas_(other.egzaminas_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
 
+Studentas& Studentas::operator=(const Studentas& other) {
+    if (this != &other) {
+        vardas_ = other.vardas_;
+        pavarde_ = other.pavarde_;
+        namuDarbai_ = other.namuDarbai_;
+        egzaminas_ = other.egzaminas_;
+        galutinisVid_ = other.galutinisVid_;
+        galutinisMed_ = other.galutinisMed_;
+    }
+    return *this;
+} 
+      
 istream& Studentas::readStudent(istream& is) {
     is >> vardas_ >> pavarde_;
 
