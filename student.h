@@ -31,17 +31,16 @@ public:
     Studentas(const Studentas& other);
     Studentas& operator=(const Studentas& other);
     Studentas(Studentas&& other) noexcept;
+    Studentas& operator=(Studentas&& other) noexcept;
 
     string vardas() const { return vardas_; }
     string pavarde() const { return pavarde_; }
     double galutinisVid() const { return galutinisVid_; }
     double galutinisMed() const { return galutinisMed_; }
-    Studentas& operator=(Studentas&& other) noexcept;
 
     istream& readStudent(istream& is);
 
     void skaiciuotiGalutinius();
-
     static double skaiciuotiVidurki(const vector<int>& pazymiai);
     static double skaiciuotiMediana(vector<int> pazymiai);
 
@@ -49,7 +48,6 @@ public:
     friend istream& operator>>(istream& is, Studentas& s);
 
 };
-
 
 template <typename konteineris>
 void nuskaitytiIsFailo(konteineris &studentai) {
