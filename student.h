@@ -28,6 +28,8 @@ public:
     Studentas();
     ~Studentas();
 
+    Studentas(const Studentas& other);
+
     string vardas() const { return vardas_; }
     string pavarde() const { return pavarde_; }
     double galutinisVid() const { return galutinisVid_; }

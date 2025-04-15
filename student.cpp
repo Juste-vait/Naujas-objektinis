@@ -2,12 +2,15 @@
 #include <fstream>
 #include <sstream>
 
-
-Studentas::Studentas() : egzaminas_(0), galutinisVid_(0), galutinisMed_(0) {}
+Studentas::Studentas() : vardas_(""), pavarde_(""), namuDarbai_(), egzaminas_(0), galutinisVid_(0.0), galutinisMed_(0.0) {}
 
 Studentas::~Studentas() {
     namuDarbai_.clear();
 }
+
+Studentas::Studentas(const Studentas& other)
+    : vardas_(other.vardas_), pavarde_(other.pavarde_), namuDarbai_(other.namuDarbai_),
+      egzaminas_(other.egzaminas_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
 
 istream& Studentas::readStudent(istream& is) {
     is >> vardas_ >> pavarde_;
