@@ -1,3 +1,7 @@
+// kompikiuot:  g++ -std=c++17 -O1 -o main_O1 main.cpp student.cpp
+//              g++ -std=c++17 -O2 -o main_O2 main.cpp student.cpp
+//              g++ -std=c++17 -O3 -o main_O3 main.cpp student.cpp
+
 #include <iostream>
 #include <fstream>
 #include "student.h"
@@ -10,11 +14,17 @@ int main() {
     string pasirinkimasIsvesti;
     int rusiavimoPasirinkimas;
 
-    nuskaitytiIsFailo(studentai);
+    testDefaultConstructor();
+    testCopyConstructor();
+    testCopyAssignment();
+    testMoveConstructor();
+    testMoveAssignment();
 
-    rusiuotiStudentus(studentai, rusiavimoPasirinkimas);
+    //nuskaitytiIsFailo(studentai);
 
-    strategija_3(studentai, nuskriaustukai);
+    //rusiuotiStudentus(studentai, rusiavimoPasirinkimas);
+
+    //strategija_3(studentai, nuskriaustukai);
 
     while (true) {
         try {

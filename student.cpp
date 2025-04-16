@@ -2,14 +2,18 @@
 #include <fstream>
 #include <sstream>
 
-Studentas::Studentas() : vardas_(""), pavarde_(""), namuDarbai_(), egzaminas_(0), galutinisVid_(0.0), galutinisMed_(0.0) {}
+Studentas::Studentas() : vardas_(""), pavarde_(""), namuDarbai_(), egzaminas_(0), galutinisVid_(0.0), galutinisMed_(0.0) {
+    cout << "Knstruktorius suveikė" << endl;
+}
 
 Studentas::~Studentas() {
     namuDarbai_.clear();
 }
 
 Studentas::Studentas(const Studentas& other)
-    : vardas_(other.vardas_), pavarde_(other.pavarde_), namuDarbai_(other.namuDarbai_), egzaminas_(other.egzaminas_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
+    : vardas_(other.vardas_), pavarde_(other.pavarde_), namuDarbai_(other.namuDarbai_), egzaminas_(other.egzaminas_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {
+        cout << "Copy konstruktorius suveikė" << endl;
+    }
 
 Studentas& Studentas::operator=(const Studentas& other) {
     if (this != &other) {
@@ -20,21 +24,27 @@ Studentas& Studentas::operator=(const Studentas& other) {
         galutinisVid_ = other.galutinisVid_;
         galutinisMed_ = other.galutinisMed_;
     }
+
+    cout << "Kopijavimo priskyrimo operatorius suveikė" << endl;
     return *this;
 } 
 
 Studentas::Studentas(Studentas&& other) noexcept
-    : vardas_(move(other.vardas_)), pavarde_(move(other.pavarde_)), namuDarbai_(move(other.namuDarbai_)), egzaminas_(other.egzaminas_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
+    : vardas_(move(other.vardas_)), pavarde_(move(other.pavarde_)), namuDarbai_(move(other.namuDarbai_)), egzaminas_(other.egzaminas_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {
+        cout << "Move konstruktorius suveikė" << endl;
+    }
       
 Studentas& Studentas::operator=(Studentas&& other) noexcept {
     if (this != &other) {
         vardas_ = move(other.vardas_);
         pavarde_ = move(other.pavarde_);
         namuDarbai_ = move(other.namuDarbai_);
-        egzaminas_ = other.egzaminas_;
-        galutinisVid_ = other.galutinisVid_;
-        galutinisMed_ = other.galutinisMed_;
+        egzaminas_ = move(other.egzaminas_);
+        galutinisVid_ = move(other.galutinisVid_);
+        galutinisMed_ = move(other.galutinisMed_);
     }
+
+    cout << "Move assignment operatorius suveikė" << endl;
     return *this;
 }
 
@@ -86,3 +96,53 @@ ostream& operator<<(ostream& os, const Studentas& s) {
 istream& operator>>(istream& is, Studentas& s) {
     return s.readStudent(is);
 }   
+
+void testDefaultConstructor() {
+    cout << "Testuojamas: Default konstruktorius" << endl;
+    Studentas s;
+    cout << s << "\n" << endl;
+}
+
+void testCopyConstructor() {
+    cout << "Testuojamas: Kopijavimo konstruktorius" << endl;
+
+    istringstream iss("Michael Jackson 8 9 10 10 9 9");
+    Studentas original;
+    original.readStudent(iss);
+    Studentas kopija(original); 
+
+    cout << "Originalas: " << original << endl;
+    cout << "Kopija:     " << kopija << "\n" << endl;
+}
+
+void testCopyAssignment() {
+    cout << "Testuojamas: Kopijavimo priskyrimo operatorius" << endl;
+    istringstream iss("Freddie Mercury 10 10 9 8 10 10");
+    Studentas b;
+    b.readStudent(iss);
+    Studentas a;
+    a = b; 
+
+    cout << "Šaltinis:   " << b << endl;
+    cout << "Gavėjas:    " << a << "\n" << endl;
+}
+
+void testMoveConstructor() {
+    cout << "Testuojamas: Move konstruktorius" << endl;
+    istringstream iss("Britney Spears 7 8 9 10 9 10");
+    Studentas laikinas;
+    laikinas.readStudent(iss);
+    Studentas perkeltas(std::move(laikinas)); 
+    cout << "Perkeltas:  " << perkeltas << "\n" << endl;
+}
+
+void testMoveAssignment() {
+    cout << "Testuojamas: Move priskyrimo operatorius" << endl;
+    istringstream iss("Lady Gaga 9 9 9 10 10 10");
+    Studentas b;
+    b.readStudent(iss);
+
+    Studentas a;
+    a = std::move(b); 
+    cout << "Gavėjas po move: " << a << "\n" << endl;
+}

@@ -89,7 +89,7 @@ void nuskaitytiIsFailo(konteineris &studentai) {
     failas.close();
 
     auto end = steady_clock::now();
-    cout << "Duomenų nuskaitymas užtruko: " << duration_cast<seconds>(end - start).count() << " s\n" << endl;
+    cout << "Duomenų nuskaitymas užtrukooooooooooo: " << duration_cast<seconds>(end - start).count() << " s\n" << endl;
 }
 
 template <typename konteineris>
@@ -218,5 +218,15 @@ void isvestiIDuFailus(konteineris& nuskriaustukai, konteineris& studentai){
 
     cout << "Failai \"nuskriaustukai.txt\" ir \"kietekai.txt\" sukurti!" << endl;
 }
+
+void testDefaultConstructor();
+
+void testCopyConstructor();
+
+void testCopyAssignment();
+
+void testMoveConstructor();
+
+void testMoveAssignment();
 
 #endif
