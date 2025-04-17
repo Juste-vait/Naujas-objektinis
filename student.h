@@ -37,6 +37,16 @@ public:
     string pavarde() const { return pavarde_; }
     double galutinisVid() const { return galutinisVid_; }
     double galutinisMed() const { return galutinisMed_; }
+    vector<int> getNamuDarbai() const { return namuDarbai_; }
+    int getEgzaminas() const { return egzaminas_; }
+
+    void setVardas(const string& vardas) { vardas_ = vardas; }
+    void setPavarde(const string& pavarde) { pavarde_ = pavarde; }
+    void setEgzaminas(int egzas) { egzaminas_ = egzas; }
+    void setNamuDarbai(const vector<int>& nd) { namuDarbai_ = nd; }
+    size_t getNamuDarbaiSize() const { return namuDarbai_.size(); }
+    void setGalutinisVid(double vid) { galutinisVid_ = vid; }
+    void setGalutinisMed(double med) { galutinisMed_ = med; }
 
     istream& readStudent(istream& is);
 
@@ -220,6 +230,10 @@ void isvestiIDuFailus(konteineris& nuskriaustukai, konteineris& studentai){
 
     cout << "Failai \"nuskriaustukai.txt\" ir \"kietekai.txt\" sukurti!" << endl;
 }
+
+void ivestiStudenta(vector<Studentas>& studentai);
+
+void generuotiStudentus(vector<Studentas>& studentai);
 
 void testDestructor();
 

@@ -55,8 +55,25 @@ int main() {
             testMoveAssignment();
         } 
         else if (pasirinkimasK == 7) {
-            nuskaitytiIsFailo(studentai);
-
+            int choise;
+            cout << "Pasirinkite kaip įvesti studentų duomenis:\n";
+            cout << "1 - ranka\n";
+            cout << "2 - generuoti\n";
+            cout << "3 - iš failo\n";
+            cout << "Pasirinkimas: ";
+            cin >> choise;
+            cout << endl;
+            
+            if (choise == 1) {
+                ivestiStudenta(studentai);
+            }
+            else if (choise == 2) {
+                generuotiStudentus(studentai);
+            }
+            else if (choise == 3){
+                nuskaitytiIsFailo(studentai);
+            }
+            
             rusiuotiStudentus(studentai);
 
             strategija_3(studentai, nuskriaustukai);
