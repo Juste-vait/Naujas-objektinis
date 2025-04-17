@@ -7,7 +7,10 @@ Studentas::Studentas() : vardas_(""), pavarde_(""), namuDarbai_(), egzaminas_(0)
 }
 
 Studentas::~Studentas() {
+    cout << "Destruktorius suveikė objektui: " << vardas_ << " " << pavarde_ << endl;
+    cout << "  namuDarbai_.size() prieš clear: " << namuDarbai_.size() << endl;
     namuDarbai_.clear();
+    cout << "  namuDarbai_.size() po clear:    " << namuDarbai_.size() << "\n" << endl;
 }
 
 Studentas::Studentas(const Studentas& other)
@@ -97,7 +100,20 @@ istream& operator>>(istream& is, Studentas& s) {
     return s.readStudent(is);
 }   
 
-void testDefaultConstructor() {
+void testDestructor() {
+    cout << "Testuojamas: Destruktorius" << endl;
+
+    {
+        istringstream iss("Leonardo DiCaprio 9 9 9 10 10 10");
+        Studentas s;
+        s.readStudent(iss);
+        cout << "Objektas sukurtas: " << s << endl;
+    }
+
+    cout << "Blokas baigtas, objektas sunaikintas\n" << endl;
+}
+
+void testConstructor() {
     cout << "Testuojamas: Default konstruktorius" << endl;
     Studentas s;
     cout << s << "\n" << endl;

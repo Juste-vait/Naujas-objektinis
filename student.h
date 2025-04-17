@@ -93,7 +93,9 @@ void nuskaitytiIsFailo(konteineris &studentai) {
 }
 
 template <typename konteineris>
-void rusiuotiStudentus(konteineris &studentai, int rusiavimoPasirinkimas){
+void rusiuotiStudentus(konteineris &studentai){
+
+    int rusiavimoPasirinkimas;
 
     while (true) {
         try {
@@ -219,7 +221,9 @@ void isvestiIDuFailus(konteineris& nuskriaustukai, konteineris& studentai){
     cout << "Failai \"nuskriaustukai.txt\" ir \"kietekai.txt\" sukurti!" << endl;
 }
 
-void testDefaultConstructor();
+void testDestructor();
+
+void testConstructor();
 
 void testCopyConstructor();
 

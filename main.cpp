@@ -12,19 +12,60 @@ int main() {
     vector<Studentas> nuskriaustukai;
     Studentas s;
     string pasirinkimasIsvesti;
-    int rusiavimoPasirinkimas;
 
-    testDefaultConstructor();
-    testCopyConstructor();
-    testCopyAssignment();
-    testMoveConstructor();
-    testMoveAssignment();
 
-    //nuskaitytiIsFailo(studentai);
 
-    //rusiuotiStudentus(studentai, rusiavimoPasirinkimas);
+    while (true) {
+        int pasirinkimasK;
+        cout << "Pasirinkite: \n";
+        cout << "1 - konstruktoriaus testavimas\n";
+        cout << "2 - destruktoriaus testavimas\n";
+        cout << "3 - copy constructor testavimas\n";
+        cout << "4 - copy assignment operator testavimas\n";
+        cout << "5 - move constructor testavimas\n";
+        cout << "6 - move assignment operator testavimas\n";
+        cout << "7 - studentų grupaviams ir išvedimas į failus\n";
+        cout << "Pasirinkimas: ";
+        cin >> pasirinkimasK;
+        cout << endl;
 
-    //strategija_3(studentai, nuskriaustukai);
+        if (cin.fail()) { 
+            cout << "Neteisinga įvestis! Įveskite skaičių 1 - 6.\n" << endl;
+            cin.clear(); 
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            continue; 
+        }
+
+        if (pasirinkimasK == 1) {
+            testConstructor();
+        } 
+        else if (pasirinkimasK == 2) {
+            testDestructor();
+        } 
+        else if (pasirinkimasK == 3) {
+            testCopyConstructor();
+        } 
+        else if (pasirinkimasK == 4) {
+            testCopyAssignment();
+        } 
+        else if (pasirinkimasK == 5) {
+            testMoveConstructor();
+        } 
+        else if (pasirinkimasK == 6) {
+            testMoveAssignment();
+        } 
+        else if (pasirinkimasK == 7) {
+            nuskaitytiIsFailo(studentai);
+
+            rusiuotiStudentus(studentai);
+
+            strategija_3(studentai, nuskriaustukai);
+            break;
+        }
+        else {
+            cout << "Neteisingas pasirinkimas! Įveskite skaičių 1 - 6.\n" << endl;
+        }
+    }
 
     while (true) {
         try {
