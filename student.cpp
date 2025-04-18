@@ -6,7 +6,7 @@ Studentas::Studentas() : vardas_(""), pavarde_(""), namuDarbai_(), egzaminas_(0)
 
 Studentas::~Studentas() {
     namuDarbai_.clear();
-    //cout << "  namuDarbai_.size() po destruktoriaus: " << namuDarbai_.size() << "\n" << endl;
+    cout << "  namuDarbai_.size() po destruktoriaus: " << namuDarbai_.size() << "\n" << endl;
 }
 
 Studentas::Studentas(const Studentas& other)
@@ -233,19 +233,6 @@ void generuotiStudentus(vector<Studentas>& studentai) {
     vector<string> vardai = {"Jonas", "Petras", "Antanas", "Nojus", "Lukas"};
     vector<string> pavardes = {"Kazlauskas", "Petraitis", "Jonaitis", "Biliūnas", "Lukauskis"};
 
-    char pasirinkimas;
-
-    while (true) {
-        cout << "Pasirinkite galutinio balo skaičiavimą (V - vidurkis, M - mediana): ";
-        cin >> pasirinkimas;
-
-        if (pasirinkimas == 'V' || pasirinkimas == 'v' || pasirinkimas == 'M' || pasirinkimas == 'm') {
-            break; 
-        } else {
-            cout << "Neteisinga įvestis! Pasirinkite V arba M.\n";
-        }
-    }
-
     while (true) {
         try {
             cout << "Ar norite pridėti studentą? (T/N): ";
@@ -259,8 +246,10 @@ void generuotiStudentus(vector<Studentas>& studentai) {
             }
 
         Studentas stud;
-        stud.vardas() = vardai[rand() % vardai.size()];
-        stud.pavarde() = pavardes[rand() % pavardes.size()];
+
+        stud.setVardas(vardai[rand() % vardai.size()]);
+        stud.setPavarde(pavardes[rand() % pavardes.size()]);
+
         
         int kiekis = rand() % 5 + 3;  
 
@@ -273,20 +262,44 @@ void generuotiStudentus(vector<Studentas>& studentai) {
 
         stud.setEgzaminas(rand() % 10 + 1); 
 
-        if (pasirinkimas == 'V' || pasirinkimas == 'v') {
-            double vidurkis = Studentas::skaiciuotiVidurki(stud.getNamuDarbai());
-            stud.setGalutinisVid(0.4 * vidurkis + 0.6 * stud.getEgzaminas());
-        } else {
-            double mediana = Studentas::skaiciuotiMediana(stud.getNamuDarbai());
-            stud.setGalutinisMed(0.4 * mediana + 0.6 * stud.getEgzaminas());
-        }
+        stud.skaiciuotiGalutinius();
 
         studentai.push_back(stud);
-
         
     }
     catch (const invalid_argument& e) {
         cout << e.what() << "Bandykite dar kartą.\n"<<endl;
     }
     }
+}
+
+void testInputOperator() {
+    istringstream input("Jonas Jonaitis 8 9 10 7");
+
+    Studentas s;
+    input >> s;
+
+    cout << "Test input operator:\n";
+    cout << "Vardas: " << s.vardas() << "\n";
+    cout << "Pavarde: " << s.pavarde() << "\n";
+    cout << "Namu darbai: ";
+    for (int nd : s.getNamuDarbai()) std::cout << nd << " ";
+    cout << "\nEgzaminas: " << s.getEgzaminas() << "\n";
+    cout << "Galutinis (vid): " << s.galutinisVid() << "\n";
+    cout << "Galutinis (med): " << s.galutinisMed() << "\n\n";
+}
+
+void testOutputOperator() {
+    Studentas s;
+    s.setVardas("Jonas");
+    s.setPavarde("Jonaitis");
+    s.setNamuDarbai({8, 9, 10});
+    s.setEgzaminas(9);
+    s.skaiciuotiGalutinius();
+
+    ostringstream output;
+    output << s;
+
+    cout << "Test output operator:\n";
+    cout << output.str() << "\n" << endl;
 }

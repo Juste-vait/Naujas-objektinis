@@ -1,4 +1,4 @@
-// kompikiuot:  g++ -std=c++17 -O1 -o main_O1 main.cpp student.cpp
+// kompiliuot:  g++ -std=c++17 -O1 -o main_O1 main.cpp student.cpp
 //              g++ -std=c++17 -O2 -o main_O2 main.cpp student.cpp
 //              g++ -std=c++17 -O3 -o main_O3 main.cpp student.cpp
 
@@ -24,7 +24,9 @@ int main() {
         cout << "4 - copy assignment operator testavimas\n";
         cout << "5 - move constructor testavimas\n";
         cout << "6 - move assignment operator testavimas\n";
-        cout << "7 - studentų grupaviams ir išvedimas į failus\n";
+        cout << "7 - input operator testavimas\n";
+        cout << "8 - output operator testavimas\n";
+        cout << "9 - studentų grupaviams ir išvedimas į failus\n";
         cout << "Pasirinkimas: ";
         cin >> pasirinkimasK;
         cout << endl;
@@ -55,6 +57,12 @@ int main() {
             testMoveAssignment();
         } 
         else if (pasirinkimasK == 7) {
+            testInputOperator();
+        } 
+        else if (pasirinkimasK == 8) {
+            testOutputOperator();
+        } 
+        else if (pasirinkimasK == 9) {
             int choise;
             cout << "Pasirinkite kaip įvesti studentų duomenis:\n";
             cout << "1 - ranka\n";

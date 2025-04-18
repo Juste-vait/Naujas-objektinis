@@ -247,4 +247,8 @@ void testMoveConstructor();
 
 void testMoveAssignment();
 
+void testInputOperator();
+
+void testOutputOperator();
+
 #endif
