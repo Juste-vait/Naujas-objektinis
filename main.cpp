@@ -32,7 +32,7 @@ int main() {
         cout << endl;
 
         if (cin.fail()) { 
-            cout << "Neteisinga įvestis! Įveskite skaičių 1 - 6.\n" << endl;
+            cout << "Neteisinga įvestis! Įveskite skaičių 1 - 9.\n" << endl;
             cin.clear(); 
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
             continue; 
@@ -88,7 +88,7 @@ int main() {
             break;
         }
         else {
-            cout << "Neteisingas pasirinkimas! Įveskite skaičių 1 - 6.\n" << endl;
+            cout << "Neteisingas pasirinkimas! Įveskite skaičių 1 - 9.\n" << endl;
         }
     }
 
