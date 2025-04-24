@@ -1,7 +1,7 @@
 v1.2
 
 
-Pridėti ir ištestuoti visi reikiami konstruktoriai ir operatoriai, kad atitiktų "Rule of five".
+Pridėti ir ištestuoti visi reikiami konstruktoriai ir operatoriai, kad atitiktų "Rule of five"..
 
 Sukurtas meniu su galimais pasirinkimais:
 
