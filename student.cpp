@@ -9,7 +9,7 @@ Studentas::~Studentas() {
 }
 
 Studentas::Studentas(const Studentas& other)
-    : vardas_(other.vardas_), pavarde_(other.pavarde_), namuDarbai_(other.namuDarbai_), egzaminas_(other.egzaminas_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
+    : Zmogus(other.vardas_, other.pavarde_), namuDarbai_(other.namuDarbai_), egzaminas_(other.egzaminas_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
 
 Studentas& Studentas::operator=(const Studentas& other) {
     if (this != &other) {
@@ -21,7 +21,7 @@ Studentas& Studentas::operator=(const Studentas& other) {
         galutinisMed_ = other.galutinisMed_;
     }
     return *this;
-} 
+}
 
 Studentas::Studentas(Studentas&& other) noexcept
     : vardas_(move(other.vardas_)), pavarde_(move(other.pavarde_)), namuDarbai_(move(other.namuDarbai_)), egzaminas_(move(other.egzaminas_)), galutinisVid_(move(other.galutinisVid_)), galutinisMed_(move(other.galutinisMed_)) {}
