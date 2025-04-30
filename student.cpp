@@ -2,11 +2,10 @@
 #include <fstream>
 #include <sstream>
 
-Studentas::Studentas() : vardas_(""), pavarde_(""), namuDarbai_(), egzaminas_(0), galutinisVid_(0.0), galutinisMed_(0.0) {}
+Studentas::Studentas() : Zmogus("", ""), namuDarbai_(), egzaminas_(0), galutinisVid_(0.0), galutinisMed_(0.0) {}
 
 Studentas::~Studentas() {
     namuDarbai_.clear();
-    cout << "  namuDarbai_.size() po destruktoriaus: " << namuDarbai_.size() << "\n" << endl;
 }
 
 Studentas::Studentas(const Studentas& other)
@@ -88,16 +87,16 @@ istream& operator>>(istream& is, Studentas& s) {
     return s.readStudent(is);
 }   
 
-void testDestructor() {
+void testDestructor() {=
     cout << "Testuojamas: Destruktorius" << endl;
 
-    {
         istringstream iss("Leonardo DiCaprio 9 9 9 10 10 10");
         Studentas s;
         s.readStudent(iss);
         cout << "Objektas sukurtas: " << s << endl;
-        cout << "  namuDarbai_.size() prieš destruktorių: " << s.getNamuDarbaiSize() << endl;
-    }
+        cout << "  namuDarbai_.size() prieš destruktorių: " << s << endl;
+        s.~Studentas();
+        cout << "  namuDarbai_.size() po destruktoriaus: " << s << "\n" << endl;
 
     cout << "Blokas baigtas, objektas sunaikintas\n" << endl;
 }
@@ -211,13 +210,12 @@ void ivestiStudenta(vector<Studentas>& studentai) {
                 }
             }
 
-            // Sukuriam studento objektą ir naudojam setterius
             Studentas stud;
             stud.setVardas(vardas);
             stud.setPavarde(pavarde);
             stud.setNamuDarbai(namuDarbai);
             stud.setEgzaminas(egzaminas);
-            stud.skaiciuotiGalutinius();  // svarbu, kad būtų apskaičiuotas galutinis
+            stud.skaiciuotiGalutinius(); 
 
             studentai.push_back(std::move(stud));
         }
