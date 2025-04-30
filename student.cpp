@@ -24,16 +24,20 @@ Studentas& Studentas::operator=(const Studentas& other) {
 }
 
 Studentas::Studentas(Studentas&& other) noexcept
-    : Zmogus(std::move(other.vardas_), std::move(other.pavarde_)), namuDarbai_(std::move(other.namuDarbai_)), egzaminas_(other.egzaminas_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
+    : Zmogus(move(other.vardas_), move(other.pavarde_)), namuDarbai_(move(other.namuDarbai_)), egzaminas_(move(other.egzaminas_)), galutinisVid_(move(other.galutinisVid_)), galutinisMed_(move(other.galutinisMed_)) {}
 
 Studentas& Studentas::operator=(Studentas&& other) noexcept {
     if (this != &other) {
-        vardas_ = std::move(other.vardas_);
-        pavarde_ = std::move(other.pavarde_);
-        namuDarbai_ = std::move(other.namuDarbai_);
-        egzaminas_ = other.egzaminas_;
-        galutinisVid_ = other.galutinisVid_;
-        galutinisMed_ = other.galutinisMed_;
+        vardas_ = move(other.vardas_);
+        pavarde_ = move(other.pavarde_);
+        namuDarbai_ = move(other.namuDarbai_);
+        egzaminas_ = move(other.egzaminas_);
+        galutinisVid_ = move(other.galutinisVid_);
+        galutinisMed_ = move(other.galutinisMed_);
+
+        other.egzaminas_ = 0;
+        other.galutinisVid_ = 0.0;
+        other.galutinisMed_ = 0.0;
     }
     return *this;
 }
@@ -87,16 +91,16 @@ istream& operator>>(istream& is, Studentas& s) {
     return s.readStudent(is);
 }   
 
-void testDestructor() {=
+void testDestructor() {
     cout << "Testuojamas: Destruktorius" << endl;
 
         istringstream iss("Leonardo DiCaprio 9 9 9 10 10 10");
         Studentas s;
         s.readStudent(iss);
         cout << "Objektas sukurtas: " << s << endl;
-        cout << "  namuDarbai_.size() prieš destruktorių: " << s << endl;
+        cout << "Studentas prieš destruktorių: " << s << endl;
         s.~Studentas();
-        cout << "  namuDarbai_.size() po destruktoriaus: " << s << "\n" << endl;
+        cout << "Studentas po destruktoriaus: " << s << "\n" << endl;
 
     cout << "Blokas baigtas, objektas sunaikintas\n" << endl;
 }
