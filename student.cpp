@@ -24,16 +24,16 @@ Studentas& Studentas::operator=(const Studentas& other) {
 }
 
 Studentas::Studentas(Studentas&& other) noexcept
-    : vardas_(move(other.vardas_)), pavarde_(move(other.pavarde_)), namuDarbai_(move(other.namuDarbai_)), egzaminas_(move(other.egzaminas_)), galutinisVid_(move(other.galutinisVid_)), galutinisMed_(move(other.galutinisMed_)) {}
-      
+    : Zmogus(std::move(other.vardas_), std::move(other.pavarde_)), namuDarbai_(std::move(other.namuDarbai_)), egzaminas_(other.egzaminas_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
+
 Studentas& Studentas::operator=(Studentas&& other) noexcept {
     if (this != &other) {
-        vardas_ = move(other.vardas_);
-        pavarde_ = move(other.pavarde_);
-        namuDarbai_ = move(other.namuDarbai_);
-        egzaminas_ = move(other.egzaminas_);
-        galutinisVid_ = move(other.galutinisVid_);
-        galutinisMed_ = move(other.galutinisMed_);
+        vardas_ = std::move(other.vardas_);
+        pavarde_ = std::move(other.pavarde_);
+        namuDarbai_ = std::move(other.namuDarbai_);
+        egzaminas_ = other.egzaminas_;
+        galutinisVid_ = other.galutinisVid_;
+        galutinisMed_ = other.galutinisMed_;
     }
     return *this;
 }
@@ -79,7 +79,7 @@ double Studentas::skaiciuotiMediana(vector<int> pazymiai) {
 }
 
 ostream& operator<<(ostream& os, const Studentas& s) {
-    os << left << setw(20) << s.pavarde_ << setw(20) << s.vardas_ << fixed << setprecision(2) << setw(20) << s.galutinisVid_ << setw(20) << s.galutinisMed_;
+    os << left << setw(20) << s.pavarde() << setw(20) << s.vardas() << fixed << setprecision(2) << setw(20) << s.galutinisVid() << setw(20) << s.galutinisMed();
     return os;
 }
 
