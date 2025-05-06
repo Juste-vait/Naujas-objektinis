@@ -114,6 +114,7 @@ void testDestructor() {
         } else {
             cout << left << setw(31) << "Destruktorius neiškviestas" << " \n";
         }
+        cout << endl;
 }
 
 void testConstructor() {
@@ -152,7 +153,7 @@ void testMoveConstructor() {
     Studentas laikinas;
     laikinas.readStudent(iss);
     Studentas perkeltas(std::move(laikinas)); 
-    cout << "Perkeltas:  " << perkeltas << "\n" << endl;
+    cout << "Perkeltas:  " << perkeltas << "\n";
     cout << "Laikinas: " << laikinas << "\n" << endl;
 }
 
@@ -164,7 +165,7 @@ void testMoveAssignment() {
 
     Studentas a;
     a = std::move(b); 
-    cout << "Gavėjas po move: " << a << "\n" << endl;
+    cout << "Gavėjas po move: " << a << "\n";
     cout << "Šaltinis po move: " << b << "\n" << endl;
 }
 

@@ -116,7 +116,9 @@ void nuskaitytiIsFailo(konteineris &studentai) {
     failas.close();
 
     auto end = steady_clock::now();
-    cout << "Duomenų nuskaitymas užtruko: " << duration_cast<seconds>(end - start).count() << " s\n" << endl;
+    auto trukme = duration_cast<duration<double>>(end - start);
+    cout << fixed << setprecision(3);
+    cout << "Duomenų nuskaitymas užtruko: " << trukme.count() << " s\n" << endl;
 }
 
 template <typename konteineris>
@@ -149,7 +151,7 @@ void rusiuotiStudentus(konteineris &studentai){
         }
     }
 
-    auto start1 = steady_clock::now();
+    auto start = steady_clock::now();
 
     switch (rusiavimoPasirinkimas) {
         case 1:
@@ -174,8 +176,10 @@ void rusiuotiStudentus(konteineris &studentai){
             break;
     }
     
-    auto end1 = steady_clock::now();
-    cout << "Rikiavimas užtruko: " << duration_cast<seconds>(end1 - start1).count() << " s\n" << endl;
+    auto end = steady_clock::now();
+    auto trukme = duration_cast<duration<double>>(end - start);
+    cout << fixed << setprecision(3);
+    cout << "Rikiavimas užtruko: " << trukme.count() << " s\n" << endl;
 }
 
 template <typename konteineris>
@@ -221,7 +225,9 @@ void strategija_3(konteineris& studentai, konteineris& nuskriaustukai) {
         studentai.shrink_to_fit();
     }
 
-    cout << "3 strategija: " << duration_cast<seconds>(end - start).count() << " s\n" << endl;
+    auto trukme = duration_cast<duration<double>>(end - start);
+    cout << fixed << setprecision(3);
+    cout << "3 strategija užtruko: " << trukme.count() << " s\n" << endl;
 }
 
 template <typename konteineris>

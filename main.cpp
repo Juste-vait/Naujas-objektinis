@@ -14,7 +14,6 @@ int main() {
     string pasirinkimasIsvesti;
 
 
-
     while (true) {
         int pasirinkimasK;
         cout << "Pasirinkite: \n";
@@ -63,31 +62,46 @@ int main() {
             testOutputOperator();
         } 
         else if (pasirinkimasK == 9) {
-            int choise;
-            cout << "Pasirinkite kaip įvesti studentų duomenis:\n";
-            cout << "1 - ranka\n";
-            cout << "2 - generuoti\n";
-            cout << "3 - iš failo\n";
-            cout << "Pasirinkimas: ";
-            cin >> choise;
-            cout << endl;
+            while (true) {
+                int choise;
+                cout << "Pasirinkite kaip įvesti studentų duomenis:\n";
+                cout << "1 - ranka\n";
+                cout << "2 - generuoti\n";
+                cout << "3 - iš failo\n";
+                cout << "Pasirinkimas: ";
+                cin >> choise;
+                cout << endl;
             
-            if (choise == 1) {
-                ivestiStudenta(studentai);
-            }
-            else if (choise == 2) {
-                generuotiStudentus(studentai);
-            }
-            else if (choise == 3){
-                nuskaitytiIsFailo(studentai);
+                if (cin.fail()) { 
+                    cout << "Neteisinga įvestis! Įveskite skaičių 1 - 3.\n" << endl;
+                    cin.clear(); 
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                    continue; 
+                }
+
+                if (choise == 1) {
+                    ivestiStudenta(studentai);
+                    break;
+                }
+                else if (choise == 2) {
+                    generuotiStudentus(studentai);
+                    break;
+                }
+                else if (choise == 3){
+                    nuskaitytiIsFailo(studentai);
+                    break;
+                }
+                else {
+                    cout << "Neteisingas pasirinkimas! Įveskite skaičių 1 - 3.\n" << endl;
+                }
             }
             
             rusiuotiStudentus(studentai);
 
             strategija_3(studentai, nuskriaustukai);
             break;
-        }
-        else {
+            }
+            else {
             cout << "Neteisingas pasirinkimas! Įveskite skaičių 1 - 9.\n" << endl;
         }
     }
