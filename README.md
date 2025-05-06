@@ -1,15 +1,17 @@
-v1.2
+v1.5
 
+Sukurta abstrakti klasė Zmogus su vardas ir pavardė atributais bei derived klasė Studentas.
 
-Pridėti ir ištestuoti visi reikiami konstruktoriai ir operatoriai, kad atitiktų "Rule of five"..
+Veikia visi reikiami konstruktoriai ir operatoriai, kad atitiktų "Rule of five". Yra implementuotas jų testavimas.
 
-Sukurtas meniu su galimais pasirinkimais:
+Meniu su galimais pasirinkimais:
 
 1 - Konstruktorius
 ![3B8CF75A-A5B2-4D6E-8972-0B1689468C1D_4_5005_c](https://github.com/user-attachments/assets/dbd6cc82-cbfc-49ea-a7f4-582cf5696087)
 
 2 - Destruktorius
-![AC878811-6B72-4818-BC84-920371B7780A_4_5005_c](https://github.com/user-attachments/assets/72db110d-e354-4bdc-b204-2b5ba30e3011)
+
+![520399B4-DE1D-4F24-814D-2F102A316E32_4_5005_c](https://github.com/user-attachments/assets/df130127-a27c-4d69-9233-fb02fb164072)
 
 3 - Copy constructor
 ![E5852B52-8D07-47A8-8C68-A2CD3A1DC07E](https://github.com/user-attachments/assets/1a70ac2a-4a55-42ad-a1aa-c57cc08accca)
@@ -44,42 +46,11 @@ Sukurtas meniu su galimais pasirinkimais:
 
 
 
---------------------------------------------------------
-
-
-
-
-
-v1.1
 
 Kopiuterio parametrai:
 CPU - Apple M3
 RAM - 16 GB
 SSD - 494,38 GB
-
-2 tyrimas: su skirtingais optimizavimo flag'ais (O1, O2, O3):
-
-![08059C02-3B7B-4ACF-A01E-1BA207F073CA](https://github.com/user-attachments/assets/0ee87292-a971-4f52-ae1d-1fa76a1e5851)
-
-
-
-
-
-
-
----------------------------------------------
-
-
-
-
-
-
-Struktūra pakeista į klasę ir visas kodas atitinkamai pritaikytas. Matuojamas nuskaitymo iš failo laikas, rikiavimas ir grupavimas. Galimas pasirinkimas išvedimo į ekraną arba du failus.
-
-1 tyrimas: atliktas su dviem failais. Išrinktas geričiausiai veikiantis konteineris ir strategija, palyginti rezultatai senos kodo versijos su struktūra, bei naujos su klase.
-
-![95FE63C3-18E9-4995-841C-D0FC8DBC0D36](https://github.com/user-attachments/assets/739a30f3-bf8c-4fd7-a686-6eeeff2feb06)
-
 
 
 
