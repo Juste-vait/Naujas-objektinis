@@ -5,7 +5,12 @@
 Studentas::Studentas() : Zmogus("", ""), namuDarbai_(), egzaminas_(0), galutinisVid_(0.0), galutinisMed_(0.0) {}
 
 Studentas::~Studentas() {
+    vardas_ = "";
+    pavarde_ = "";
     namuDarbai_.clear();
+    egzaminas_ = 0;
+    galutinisVid_ = 0.0;
+    galutinisMed_ = 0.0;
 }
 
 Studentas::Studentas(const Studentas& other)
@@ -94,15 +99,21 @@ istream& operator>>(istream& is, Studentas& s) {
 void testDestructor() {
     cout << "Testuojamas: Destruktorius" << endl;
 
-        istringstream iss("Leonardo DiCaprio 9 9 9 10 10 10");
-        Studentas s;
-        s.readStudent(iss);
-        cout << "Objektas sukurtas: " << s << endl;
-        cout << "Studentas prieš destruktorių: " << s << endl;
-        s.~Studentas();
-        cout << "Studentas po destruktoriaus: " << s << "\n" << endl;
+        Studentas* s = new Studentas();
+        s->setVardas("Bruno");
+        s->setPavarde("Mars");
+        s->setNamuDarbai({10, 9, 8});
+        s->setEgzaminas(9);
+        s->setGalutinisVid(9);
+        s->setGalutinisMed(9);
 
-    cout << "Blokas baigtas, objektas sunaikintas\n" << endl;
+        s->~Studentas();
+
+        if (s->getNamuDarbai().empty() && s->getEgzaminas() == 0) {
+            cout << left << setw(31) << "Destruktorius iškviestas" << "\n";
+        } else {
+            cout << left << setw(31) << "Destruktorius neiškviestas" << " \n";
+        }
 }
 
 void testConstructor() {
