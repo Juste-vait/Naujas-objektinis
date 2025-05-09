@@ -29,7 +29,14 @@ Studentas& Studentas::operator=(const Studentas& other) {
 }
 
 Studentas::Studentas(Studentas&& other) noexcept
-    : Zmogus(move(other.vardas_), move(other.pavarde_)), namuDarbai_(move(other.namuDarbai_)), egzaminas_(move(other.egzaminas_)), galutinisVid_(move(other.galutinisVid_)), galutinisMed_(move(other.galutinisMed_)) {}
+    : Zmogus(move(other.vardas_), move(other.pavarde_)), namuDarbai_(move(other.namuDarbai_)), egzaminas_(move(other.egzaminas_)), galutinisVid_(move(other.galutinisVid_)), galutinisMed_(move(other.galutinisMed_)) {
+        other.vardas_.clear();
+        other.pavarde_.clear();
+        other.namuDarbai_.clear();
+        other.egzaminas_ = 0;
+        other.galutinisVid_ = 0.0;
+        other.galutinisMed_ = 0.0;
+    }
 
 Studentas& Studentas::operator=(Studentas&& other) noexcept {
     if (this != &other) {
@@ -115,6 +122,8 @@ void testDestructor() {
             cout << left << setw(31) << "Destruktorius neiškviestas" << " \n";
         }
         cout << endl;
+
+        operator delete(s);
 }
 
 void testConstructor() {
