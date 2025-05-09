@@ -43,4 +43,31 @@ TEST_CASE("Copy assignment works correctly") {
     REQUIRE(s2.getNamuDarbai() == vector<int>({8, 9}));
 }
 
+// 4. Move konstruktorius
+TEST_CASE("Move constructor transfers ownership") {
+    Studentas s1;
+    s1.setVardas("X");
+    s1.setEgzaminas(10);
+    s1.setNamuDarbai({10, 10});
+    s1.skaiciuotiGalutinius();
 
+    Studentas s2 = std::move(s1);
+
+    REQUIRE(s2.vardas() == "X");
+    REQUIRE(s2.getEgzaminas() == 10);
+}
+
+// 5. Move assignment operator
+TEST_CASE("Move assignment operator works") {
+    Studentas s1;
+    s1.setVardas("Move");
+    s1.setNamuDarbai({7, 8});
+    s1.setEgzaminas(9);
+    s1.skaiciuotiGalutinius();
+
+    Studentas s2;
+    s2 = std::move(s1);
+
+    REQUIRE(s2.vardas() == "Move");
+    REQUIRE(s2.getNamuDarbai().size() == 2);
+}
