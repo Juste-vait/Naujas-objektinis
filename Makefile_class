@@ -1,0 +1,42 @@
+CXXFLAGS = -std=c++17 -Wall -I/opt/homebrew/Cellar/catch2/3.8.1/include
+
+all: main
+
+O1: main_O1
+
+main_O1: main.cpp student.cpp student.h
+	g++ -std=c++17 -Wall -O1 -o main_O1 main.cpp student.cpp
+
+O2: main_O2
+
+main_O2: main.cpp student.cpp student.h
+	g++ -std=c++17 -Wall -O2 -o main_O2 main.cpp student.cpp
+
+O3: main_O3
+
+main_O3: main.cpp student.cpp student.h
+	g++ -std=c++17 -Wall -O3 -o main_O3 main.cpp student.cpp
+
+main: main.cpp student.cpp student.h
+	g++ -std=c++17 -Wall -o main main.cpp student.cpp
+
+run_O1: main_O1
+	./main_O1
+
+run_O2: main_O2
+	./main_O2
+
+run_O3: main_O3
+	./main_O3
+
+run_tests: test
+	./tests/test_exec
+
+# Test target
+tests: tests/tests.cpp student.cpp student.h
+	g++ $(CXXFLAGS) -o tests/test_exec tests/tests.cpp student.cpp
+
+# Clean up
+clean:
+	rm -f main main_O1 main_O2 main_O3 tests/test_exec
+
