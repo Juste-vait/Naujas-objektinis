@@ -6,6 +6,7 @@
 #include <fstream>
 #include "student.h"
 #include <vector>
+#include "programa_utils.h"
 
 int main() {
     vector<Studentas> studentai;
