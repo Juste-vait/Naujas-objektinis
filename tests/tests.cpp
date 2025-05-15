@@ -99,3 +99,35 @@ TEST_CASE("Move assignment operator perkelia duomenis") {
     REQUIRE(s1.galutinisMed() == 0.0);
 }
 
+// 6. readStudent() testas
+TEST_CASE("readStudent() nuskaitymas veikia korektiškai") {
+    std::istringstream iss("Vardenis Pavardenis 8 9 10");
+    Studentas s;
+    iss >> s;
+
+    REQUIRE(s.vardas() == "Vardenis");
+    REQUIRE(s.pavarde() == "Pavardenis");
+    REQUIRE(s.getNamuDarbai() == std::vector<int>({8, 9}));
+    REQUIRE(s.getEgzaminas() == 10);
+    REQUIRE(s.galutinisVid() > 0.0);
+    REQUIRE(s.galutinisMed() > 0.0);
+}
+
+// 7. skaiciuotiGalutinius() testas
+TEST_CASE("skaiciuotiVidurki ir skaiciuotiMediana veikia korektiškai") {
+    Studentas s;
+    std::vector<int> pazymiai = {8, 9, 10};
+
+    double vid = s.skaiciuotiVidurki(pazymiai);
+    double med = s.skaiciuotiMediana(pazymiai);
+
+    REQUIRE(vid == (9.0));
+    REQUIRE(med == (9.0));
+
+    pazymiai = {7, 9, 10, 8};
+    med = s.skaiciuotiMediana(pazymiai);
+
+    REQUIRE(med == (8 + 9) / 2.0);
+}
+
+
