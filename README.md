@@ -1,8 +1,12 @@
-v1.5
+v2.0
 
-Sukurta abstrakti klasė Zmogus su vardas ir pavardė atributais bei derived klasė Studentas.
+Sukurtas atskiras failas tests.cpp su septyniais unit testais (catch2 framework).
+Visi unit testai praėjo: 
 
-Veikia visi reikiami konstruktoriai ir operatoriai, kad atitiktų "Rule of five". Yra implementuotas jų testavimas.
+![9ED2F7FB-6DC3-4498-AEE8-F91B26C4E757_4_5005_c](https://github.com/user-attachments/assets/d3066ca9-63df-436f-85f0-0d7ac134a346)
+
+
+main.cpp
 
 Meniu su galimais pasirinkimais:
 
