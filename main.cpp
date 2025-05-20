@@ -6,11 +6,12 @@
 #include <fstream>
 #include "student.h"
 #include <vector>
-#include "programa_utils.h"
+#include "utils.h"
+#include "vector.h"
 
 int main() {
-    vector<Studentas> studentai;
-    vector<Studentas> nuskriaustukai;
+    Vector<Studentas> studentai;
+    Vector<Studentas> nuskriaustukai;
     Studentas s;
     string pasirinkimasIsvesti;
 
