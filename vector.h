@@ -45,7 +45,11 @@ private:
         other.capacity_ = 0;
     }
 
-    
+    // Destruktorius
+    ~Vector() {
+        delete[] data_;
+    }
+
 };
 
 #endif
