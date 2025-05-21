@@ -111,6 +111,27 @@ private:
         std::swap(size_, other.size_);
         std::swap(capacity_, other.capacity_);
     }
+
+    // Elementų pasiekimas
+    T& operator[](size_t index) {
+        if (index >= size_) throw std::out_of_range("Indeksas ne intervale");
+        return data_[index];
+    }
+
+    const T& operator[](size_t index) const {
+        if (index >= size_) throw std::out_of_range("Indeksas ne intervale");
+        return data_[index];
+    }
+
+    T& at(size_t index) {
+        if (index >= size_) throw std::out_of_range("Indeksas ne intervale");
+        return data_[index];
+    }
+
+    const T& at(size_t index) const {
+        if (index >= size_) throw std::out_of_range("Indeksas ne intervale");
+        return data_[index];
+    }
 };
 
 #endif
