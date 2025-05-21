@@ -1,24 +1,31 @@
-CXXFLAGS = -std=c++17 -Wall -I/opt/homebrew/Cellar/catch2/3.8.1/include
-
 all: main
 
 O1: main_O1
 
-main_O1: main.cpp student.cpp student.h
-	g++ -std=c++17 -Wall -O1 -o main_O1 main.cpp student.cpp
+main_O1: main.cpp student.cpp student.h utils.cpp utils.h vector.h
+	g++ -std=c++17 -Wall -O1 -o main_O1 main.cpp student.cpp utils.cpp
 
 O2: main_O2
 
-main_O2: main.cpp student.cpp student.h
-	g++ -std=c++17 -Wall -O2 -o main_O2 main.cpp student.cpp
+main_O2: main.cpp student.cpp student.h utils.cpp utils.h vector.h
+	g++ -std=c++17 -Wall -O2 -o main_O2 main.cpp student.cpp utils.cpp
 
 O3: main_O3
 
-main_O3: main.cpp student.cpp student.h
-	g++ -std=c++17 -Wall -O3 -o main_O3 main.cpp student.cpp
+main_O3: main.cpp student.cpp student.h utils.cpp utils.h vector.h
+	g++ -std=c++17 -Wall -O3 -o main_O3 main.cpp student.cpp utils.cpp
 
-main: main.cpp student.cpp student.h
-	g++ -std=c++17 -Wall -o main main.cpp student.cpp
+main: main.cpp student.cpp student.h utils.cpp utils.h vector.h
+	g++ -std=c++17 -Wall -o main main.cpp student.cpp utils.cpp
+
+tests: tests/tests.cpp student.cpp student.h
+	g++ -std=c++17 -Wall -I/opt/homebrew/Cellar/catch2/3.8.1/include -L/opt/homebrew/Cellar/catch2/3.8.1/lib -lCatch2Main -lCatch2 -o tests/tests tests/tests.cpp student.cpp
+
+tests_v: tests/vector_tests.cpp student.cpp student.h vector.h
+	g++ -std=c++17 -Wall -I/opt/homebrew/Cellar/catch2/3.8.1/include -L/opt/homebrew/Cellar/catch2/3.8.1/lib -lCatch2Main -lCatch2 -o tests/tests_v tests/vector_tests.cpp student.cpp
+
+run_tests: tests
+	./tests/tests
 
 run_O1: main_O1
 	./main_O1
@@ -29,14 +36,9 @@ run_O2: main_O2
 run_O3: main_O3
 	./main_O3
 
-run_tests: test
-	./tests/test_exec
+run_tests_v: tests_v
+	./tests/tests_v
 
-# Test target
-tests: tests/tests.cpp student.cpp student.h
-	g++ $(CXXFLAGS) -o tests/test_exec tests/tests.cpp student.cpp
-
-# Clean up
 clean:
 	rm -f main main_O1 main_O2 main_O3 tests/test_exec
 
