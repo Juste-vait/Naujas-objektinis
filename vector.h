@@ -143,6 +143,17 @@ private:
         if (empty()) throw std::out_of_range("Vektorius tuščias");
         return data_[0];
     }
+
+    // Pasiekti paskutinį elementą
+    T& back() {
+        if (empty()) throw std::out_of_range("Vektorius tuščias");
+        return data_[size_ - 1];
+    }
+
+    const T& back() const {
+        if (empty()) throw std::out_of_range("Vektorius tuščias");
+        return data_[size_ - 1];
+    }
 };
 
 #endif
