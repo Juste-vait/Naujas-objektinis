@@ -22,6 +22,16 @@ private:
         data_ = new_data;
         capacity_ = new_capacity;
     }
+
+    public:
+    // Kontruktoriai
+    Vector() : data_(nullptr), size_(0), capacity_(0) {}
+
+    explicit Vector(size_t size) : data_(new T[size]), size_(size), capacity_(size) {}
+
+    Vector(std::initializer_list<T> init) : Vector(init.size()) {
+        std::copy(init.begin(), init.end(), data_);
+    }
 };
 
 #endif
