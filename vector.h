@@ -154,6 +154,29 @@ private:
         if (empty()) throw std::out_of_range("Vektorius tuščias");
         return data_[size_ - 1];
     }
+
+    // Capacity
+    size_t size() const { return size_; }
+
+    size_t capacity() const { return capacity_; }
+
+    bool empty() const { return size_ == 0; }
+
+    void reserve(size_t new_capacity) {
+        if (new_capacity > capacity_) {
+            reallocate(new_capacity);
+        }
+    }
+
+    void resize(size_t new_size) {
+        if (new_size > capacity_) {
+            reserve(new_size);
+        }
+        for (size_t i = size_; i < new_size; ++i) {
+            data_[i] = T();
+        }
+        size_ = new_size;
+    }
 };
 
 #endif
