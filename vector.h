@@ -32,6 +32,20 @@ private:
     Vector(std::initializer_list<T> init) : Vector(init.size()) {
         std::copy(init.begin(), init.end(), data_);
     }
+
+    // Kopijavimo konstruktorius
+    Vector(const Vector& other) : data_(new T[other.capacity_]), size_(other.size_), capacity_(other.capacity_) {
+        std::copy(other.data_, other.data_ + other.size_, data_);
+    }
+
+    // Move kontruktorius
+    Vector(Vector&& other) noexcept : data_(other.data_), size_(other.size_), capacity_(other.capacity_) {
+        other.data_ = nullptr;
+        other.size_ = 0;
+        other.capacity_ = 0;
+    }
+
+    
 };
 
 #endif
