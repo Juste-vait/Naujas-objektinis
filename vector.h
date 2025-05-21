@@ -132,6 +132,17 @@ private:
         if (index >= size_) throw std::out_of_range("Indeksas ne intervale");
         return data_[index];
     }
+
+    // Pasiekti pirmą elementą
+    T& front() {
+        if (empty()) throw std::out_of_range("Vektorius tuščias");
+        return data_[0];
+    }
+
+    const T& front() const {
+        if (empty()) throw std::out_of_range("Vektorius tuščias");
+        return data_[0];
+    }
 };
 
 #endif
