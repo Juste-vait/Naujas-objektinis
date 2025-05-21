@@ -97,6 +97,20 @@ private:
         size_ -= range_size;
         return data_ + start_index;
     }
+
+    // Shrink to fit
+    void shrink_to_fit() {
+        if (size_ < capacity_) {
+            reallocate(size_);
+        }
+    }
+
+    // Swap du vektorius
+    void swap(Vector& other) noexcept {
+        std::swap(data_, other.data_);
+        std::swap(size_, other.size_);
+        std::swap(capacity_, other.capacity_);
+    }
 };
 
 #endif
