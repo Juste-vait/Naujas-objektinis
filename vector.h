@@ -76,6 +76,27 @@ private:
         return *this;
     }
 
+    // Ištrinti elementą tam tikroje pozicijoje
+    T* erase(T* pos) {
+        size_t index = pos - data_;
+        for (size_t i = index; i < size_ - 1; ++i) {
+            data_[i] = std::move(data_[i + 1]);
+        }
+        --size_;
+        return data_ + index;
+    }
+
+    T* erase(T* first, T* last) {
+        size_t start_index = first - data_;
+        size_t end_index = last - data_;
+        size_t range_size = end_index - start_index;
+    
+        for (size_t i = start_index; i < size_ - range_size; ++i) {
+            data_[i] = std::move(data_[i + range_size]);
+        }
+        size_ -= range_size;
+        return data_ + start_index;
+    }
 };
 
 #endif
