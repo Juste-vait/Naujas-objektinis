@@ -215,6 +215,24 @@ private:
         size_ = new_size;
     }
     
+    // Lyginimo operatoriai
+    bool operator==(const Vector& other) const {
+        if (size_ != other.size_) return false;
+        for (size_t i = 0; i < size_; ++i) {
+            if (data_[i] != other.data_[i]) return false;
+        }
+        return true;
+    }
+
+    bool operator!=(const Vector& other) const {
+        return !(*this == other);
+    }
+
+    // Iteratoriai
+    T* begin() { return data_; }
+    T* end() { return data_ + size_; }
+    const T* begin() const { return data_; }
+    const T* end() const { return data_ + size_; }
 };
 
 #endif
