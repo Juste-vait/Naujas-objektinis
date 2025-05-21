@@ -177,6 +177,44 @@ private:
         }
         size_ = new_size;
     }
+
+    // Modifikatoriai
+    void push_back(const T& value) {
+        if (size_ == capacity_) {
+            reserve(capacity_ == 0 ? 1 : capacity_ * 2);
+        }
+        data_[size_++] = value;
+    }
+
+    void push_back(T&& value) {
+        if (size_ == capacity_) {
+            reserve(capacity_ == 0 ? 1 : capacity_ * 2);
+        }
+        data_[size_++] = std::move(value);
+    }
+
+    void pop_back() {
+        if (size_ > 0) {
+            --size_;
+        }
+    }
+
+    void clear() {
+        size_ = 0;
+    }
+
+    void assign(T* first, T* last) {
+        clear();
+        size_t new_size = last - first;
+        if (new_size > capacity_) {
+            reallocate(new_size);
+        }
+        for (size_t i = 0; i < new_size; ++i) {
+            data_[i] = *(first + i);
+        }
+        size_ = new_size;
+    }
+    
 };
 
 #endif
