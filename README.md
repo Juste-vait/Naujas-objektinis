@@ -1,6 +1,9 @@
 v3.0
 
-std::vector vs Vector testai:
+Atlikti std::vector vs Vector testai, užpildant vektorius 10000, 100000, 1000000, 10000000, 100000000 elementų push_back() funkcija. Pagal visus testus ir jų vidurkį, greičiau užpildomas naujai sukurtas Vector klasės vektorius.
+![9BC0F310-E42E-4E0F-BE85-7D4E772C701E](https://github.com/user-attachments/assets/1a076f90-51f0-493e-9b5b-043cdde4fd6c)
+
+
 
 ![52EAE185-7E83-4D81-8DDD-B4D9FB80B05E_4_5005_c](https://github.com/user-attachments/assets/b03ec4ae-8d34-4002-9fbe-d1f088ab8bfa)
 ![F56385AB-3832-4E41-B138-207CA3E976FC_4_5005_c](https://github.com/user-attachments/assets/2dbbb092-db73-4272-bd99-ed5c2fa72041)
