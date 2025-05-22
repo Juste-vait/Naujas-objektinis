@@ -1,5 +1,6 @@
 #include "student.h"
 #include "utils.h"
+#include "vector.h"
 #include <fstream>
 #include <sstream>
 
@@ -78,7 +79,7 @@ void testMoveAssignment() {
     cout << "Šaltinis po move: " << b << "\n" << endl;
 }
 
-void ivestiStudenta(vector<Studentas>& studentai) {
+void ivestiStudenta(Vector<Studentas>& studentai) {
     char pasirinkimas;
 
     while (true) {
@@ -152,7 +153,7 @@ void ivestiStudenta(vector<Studentas>& studentai) {
     }
 }
 
-void generuotiStudentus(vector<Studentas>& studentai) {
+void generuotiStudentus(Vector<Studentas>& studentai) {
     vector<string> vardai = {"Jonas", "Petras", "Antanas", "Nojus", "Lukas"};
     vector<string> pavardes = {"Kazlauskas", "Petraitis", "Jonaitis", "Biliūnas", "Lukauskis"};
 
@@ -225,4 +226,30 @@ void testOutputOperator() {
 
     cout << "Test output operator:\n";
     cout << output.str() << "\n" << endl;
+}
+
+void test_vector_push_back(unsigned int sz) {
+    cout << "Testavimas su " << sz << " elementų:\n";
+
+    // std::vector testas
+    {
+        std::vector<int> v1;
+        auto start = std::chrono::high_resolution_clock::now();
+        for (unsigned int i = 1; i <= sz; ++i) v1.push_back(i);
+        auto end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> duration = end - start;
+        cout << "std::vector užtruko: " << duration.count() << " s\n";
+    }
+
+    // klasės Vector testas
+    {
+        Vector<int> v2;
+        auto start = std::chrono::high_resolution_clock::now();
+        for (unsigned int i = 1; i <= sz; ++i) v2.push_back(i);
+        auto end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> duration = end - start;
+        cout << "klasė Vector užtruko: " << duration.count() << " s\n";
+    }
+
+    cout << "----------------------------------------\n";
 }

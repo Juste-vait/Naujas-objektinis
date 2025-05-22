@@ -2,6 +2,7 @@
 #define PROGRAMA_UTILS_H
 
 #include "student.h"
+#include "vector.h"
 
 void testDestructor();
 void testConstructor();
@@ -11,8 +12,8 @@ void testMoveConstructor();
 void testMoveAssignment();
 void testInputOperator();
 void testOutputOperator();
-void ivestiStudenta(vector<Studentas>& studentai);
-void generuotiStudentus(vector<Studentas>& studentai);
+void ivestiStudenta(Vector<Studentas>& studentai);
+void generuotiStudentus(Vector<Studentas>& studentai);
 
 template <typename konteineris>
 void nuskaitytiIsFailo(konteineris &studentai) {
@@ -191,5 +192,7 @@ void isvestiIDuFailus(konteineris& nuskriaustukai, konteineris& studentai){
 
     cout << "Failai \"nuskriaustukai.txt\" ir \"kietekai.txt\" sukurti!" << endl;
 }
+
+void test_vector_push_back(unsigned int sz);
 
 #endif
