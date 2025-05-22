@@ -1,12 +1,59 @@
-v2.0
-
-Sukurtas atskiras failas tests.cpp su septyniais unit testais (catch2 framework).
-Visi unit testai praėjo: 
-
-![9ED2F7FB-6DC3-4498-AEE8-F91B26C4E757_4_5005_c](https://github.com/user-attachments/assets/d3066ca9-63df-436f-85f0-0d7ac134a346)
+v3.0
+    Ištestuoti Vector klasės metodai:
+    ![43844A5A-1AAB-4DFC-8C87-CFF122949E24_4_5005_c](https://github.com/user-attachments/assets/58775fa6-c5a4-4c9e-8851-16457e49c5e8)
+    
 
 
-main.cpp
+
+
+5 Vector klasės metodų pavyzdžiai:
+//1
+    void push_back(const T& value) {
+        if (size_ == capacity_) {
+            reserve(capacity_ == 0 ? 1 : capacity_ * 2);
+        }
+        data_[size_++] = value;
+    }
+
+//2
+    void push_back(T&& value) {
+        if (size_ == capacity_) {
+            reserve(capacity_ == 0 ? 1 : capacity_ * 2);
+        }
+        data_[size_++] = std::move(value);
+    }
+
+//3
+    void pop_back() {
+        if (size_ > 0) {
+            --size_;
+        }
+    }
+
+//4
+    void clear() {
+        size_ = 0;
+    }
+
+//5
+    void assign(T* first, T* last) {
+        clear();
+        size_t new_size = last - first;
+        if (new_size > capacity_) {
+            reallocate(new_size);
+        }
+        for (size_t i = 0; i < new_size; ++i) {
+            data_[i] = *(first + i);
+        }
+        size_ = new_size;
+    }
+
+
+
+
+
+
+main.cpp:
 
 Meniu su galimais pasirinkimais:
 
