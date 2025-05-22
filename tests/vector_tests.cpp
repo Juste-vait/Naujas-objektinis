@@ -36,6 +36,13 @@ TEST_CASE("Perkėlimo konstruktorius perkelia duomenis", "[move_constructor]") {
     REQUIRE(a.size() == 0);
 }
 
+TEST_CASE("Destruktorius atlaisvina atmintį", "[destructor]") {
+    {
+        Vector<int> v{1, 2, 3};
+    }
+    REQUIRE(true); 
+}
+
 TEST_CASE("Kopijavimo priskyrimo operatorius perrašo teisingai", "[copy_assignment]") {
     Vector<int> a{4, 5, 6};
     Vector<int> b;
@@ -152,4 +159,32 @@ TEST_CASE("begin ir end grąžina teisingus iteratorius", "[iterators]") {
         sum += *it;
     }
     REQUIRE(sum == 6);
+}
+
+TEST_CASE("Vector dydis, talpa ir ar tuščias", "[size_capacity_empty]") {
+    Vector<int> v;
+
+    SECTION("Pradinė būsena") {
+        REQUIRE(v.size() == 0);
+        REQUIRE(v.capacity() == 0);
+        REQUIRE(v.empty() == true);
+    }
+
+    SECTION("Po push_back operacijų") {
+        v.push_back(42);
+        v.push_back(100);
+
+        REQUIRE(v.size() == 2);
+        REQUIRE(v.empty() == false);
+        REQUIRE(v.capacity() >= 2);
+    }
+
+    SECTION("Po clear iškvietimo") {
+        v.push_back(10);
+        v.push_back(20);
+        v.clear();
+
+        REQUIRE(v.size() == 0);
+        REQUIRE(v.empty() == true);
+    }
 }
