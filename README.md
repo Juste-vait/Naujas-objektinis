@@ -1,9 +1,23 @@
 v3.0
-    Ištestuoti Vector klasės metodai:
-    ![43844A5A-1AAB-4DFC-8C87-CFF122949E24_4_5005_c](https://github.com/user-attachments/assets/58775fa6-c5a4-4c9e-8851-16457e49c5e8)
+
+std::vector vs Vector testai:
+
+![52EAE185-7E83-4D81-8DDD-B4D9FB80B05E_4_5005_c](https://github.com/user-attachments/assets/b03ec4ae-8d34-4002-9fbe-d1f088ab8bfa)
+![F56385AB-3832-4E41-B138-207CA3E976FC_4_5005_c](https://github.com/user-attachments/assets/2dbbb092-db73-4272-bd99-ed5c2fa72041)
+![2ED03AE2-531A-4581-8860-E6B1000EA0B9_4_5005_c](https://github.com/user-attachments/assets/84b76fc7-c08c-4e01-b063-e08e697fb3cc)
+![E3274865-C90A-4BAF-B2AB-36356FA20CA6_4_5005_c](https://github.com/user-attachments/assets/3c16b871-cb0d-474d-a71c-4ba95aba682f)
+![8F7FCF4E-CDA4-4EF5-B547-EF82C5D27B51_4_5005_c](https://github.com/user-attachments/assets/3db5bd47-f7c2-4bdc-87fa-4c9857663136)
+
+
+---------------------------------------------------------------------------
+    
+    
+Ištestuoti Vector klasės metodai:
+
+![43844A5A-1AAB-4DFC-8C87-CFF122949E24_4_5005_c](https://github.com/user-attachments/assets/58775fa6-c5a4-4c9e-8851-16457e49c5e8)
     
 
-
+---------------------------------------------------------------------------
 
 
 5 Vector klasės metodų pavyzdžiai:
