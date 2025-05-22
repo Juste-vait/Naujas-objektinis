@@ -1,0 +1,61 @@
+\chapter{README}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{README@{README}}
+v3.\+0
+
+Realokacijų skaičius vienodas std\+::vector ir \doxylink{class_vector}{Vector} klasei\+: 
+
+Atlikti std\+::vector vs \doxylink{class_vector}{Vector} testai, užpildant vektorius 10000, 100000, 1000000, 10000000, 100000000 elementų push\+\_\+back() funkcija. Pagal visus testus ir jų vidurkį, greičiau užpildomas naujai sukurtas \doxylink{class_vector}{Vector} klasės vektorius. 
+
+    
+
+\DoxyHorRuler{0}
+
+
+Ištestuoti \doxylink{class_vector}{Vector} klasės metodai\+:
+
+
+
+\DoxyHorRuler{0}
+
+
+5 \doxylink{class_vector}{Vector} klasės metodų pavyzdžiai\+: //1 void push\+\_\+back(const T\& value) \{ if (size\+\_\+ == capacity\+\_\+) \{ reserve(capacity\+\_\+ == 0 ? 1 \+: capacity\+\_\+ \texorpdfstring{$\ast$}{*} 2); \} data\+\_\+\mbox{[}size\+\_\+++\mbox{]} = value; \}
+
+//2 void push\+\_\+back(\+T\&\& value) \{ if (size\+\_\+ == capacity\+\_\+) \{ reserve(capacity\+\_\+ == 0 ? 1 \+: capacity\+\_\+ \texorpdfstring{$\ast$}{*} 2); \} data\+\_\+\mbox{[}size\+\_\+++\mbox{]} = std\+::move(value); \}
+
+//3 void pop\+\_\+back() \{ if (size\+\_\+ \texorpdfstring{$>$}{>} 0) \{ --size\+\_\+; \} \}
+
+//4 void clear() \{ size\+\_\+ = 0; \}
+
+//5 void assign(\+T\texorpdfstring{$\ast$}{*} first, T\texorpdfstring{$\ast$}{*} last) \{ clear(); size\+\_\+t new\+\_\+size = last -\/ first; if (new\+\_\+size \texorpdfstring{$>$}{>} capacity\+\_\+) \{ reallocate(new\+\_\+size); \} for (size\+\_\+t i = 0; i \texorpdfstring{$<$}{<} new\+\_\+size; ++i) \{ data\+\_\+\mbox{[}i\mbox{]} = \texorpdfstring{$\ast$}{*}(first + i); \} size\+\_\+ = new\+\_\+size; \}
+
+main.\+cpp\+:
+
+Meniu su galimais pasirinkimais\+:
+
+1 -\/ Konstruktorius 
+
+2 -\/ Destruktorius
+
+
+
+3 -\/ Copy constructor 
+
+4 -\/ Copy assignment operator 
+
+5 -\/ Move constructor 
+
+6 -\/ Move operator 
+
+7 -\/ Input operator 
+
+8 -\/ Output operator 
+
+9 -\/ studentų grupavimas ir išvedimas į failus \begin{DoxyVerb}9.1 - įvesti duomenis ranka
+
+9.2 - generuoti duomenis
+
+9.3 - nuskaityti duomenis iš failo
+\end{DoxyVerb}
+
+
+Kopiuterio parametrai\+: CPU -\/ Apple M3 RAM -\/ 16 GB SSD -\/ 494,38 GB 
