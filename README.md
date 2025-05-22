@@ -1,5 +1,9 @@
 v3.0
 
+Realokacijų skaičius vienodas std::vector ir Vector klasei:
+![31D1F6D8-3132-4675-B0C9-5E1F9D61933A_4_5005_c](https://github.com/user-attachments/assets/fd514389-8109-4b25-92b7-52d82a512261)
+
+
 Atlikti std::vector vs Vector testai, užpildant vektorius 10000, 100000, 1000000, 10000000, 100000000 elementų push_back() funkcija. Pagal visus testus ir jų vidurkį, greičiau užpildomas naujai sukurtas Vector klasės vektorius.
 ![9BC0F310-E42E-4E0F-BE85-7D4E772C701E](https://github.com/user-attachments/assets/1a076f90-51f0-493e-9b5b-043cdde4fd6c)
 
