@@ -9,11 +9,16 @@
 #include "utils.h"
 #include "vector.h"
 
+using std::chrono::duration;
+using std::chrono::duration_cast;
+using std::chrono::steady_clock;
+
 int main() {
     Vector<Studentas> studentai;
     Vector<Studentas> nuskriaustukai;
     Studentas s;
     string pasirinkimasIsvesti;
+    double total_time = 0.0;
 
 
     while (true) {
@@ -27,13 +32,19 @@ int main() {
         cout << "6 - move assignment operator testavimas\n";
         cout << "7 - input operator testavimas\n";
         cout << "8 - output operator testavimas\n";
-        cout << "9 - studentų grupaviams ir išvedimas į failus\n";
+        cout << "9 - studentų grupavimas ir išvedimas į failus\n";
+        cout << "10 - std::vector ir klasės Vector testas su 10000\n";
+        cout << "11 - std::vector ir klasės Vector testas su 100000\n";
+        cout << "12 - std::vector ir klasės Vector testas su 1000000\n";
+        cout << "13 - std::vector ir klasės Vector testas su 10000000\n";
+        cout << "14 - std::vector ir klasės Vector testas su 100000000\n";
+        cout << "15 - programos veikimo testas\n";
         cout << "Pasirinkimas: ";
         cin >> pasirinkimasK;
         cout << endl;
 
         if (cin.fail()) { 
-            cout << "Neteisinga įvestis! Įveskite skaičių 1 - 9.\n" << endl;
+            cout << "Neteisinga įvestis! Įveskite skaičių 1 - 15.\n" << endl;
             cin.clear(); 
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
             continue; 
@@ -90,7 +101,7 @@ int main() {
                     break;
                 }
                 else if (choise == 3){
-                    nuskaitytiIsFailo(studentai);
+                    nuskaitytiIsFailo(studentai, total_time);
                     break;
                 }
                 else {
@@ -98,14 +109,41 @@ int main() {
                 }
             }
             
-            rusiuotiStudentus(studentai);
+            rusiuotiStudentus(studentai, total_time);
 
-            strategija_3(studentai, nuskriaustukai);
+            strategija_3(studentai, nuskriaustukai, total_time);
             break;
+            } 
+            else if (pasirinkimasK == 10){
+                test_vector_push_back(10000);
+            }
+            else if (pasirinkimasK == 11){
+                test_vector_push_back(100000);
+            }
+            else if (pasirinkimasK == 12){
+                test_vector_push_back(1000000);
+            }
+            else if (pasirinkimasK == 13){
+                test_vector_push_back(10000000);
+            }
+            else if (pasirinkimasK == 14){
+                test_vector_push_back(100000000);
+            }
+            else if (pasirinkimasK == 15){
+                
+                total_time = 0.0;
+
+                nuskaitytiIsFailo(studentai, total_time);
+                rusiuotiStudentus(studentai, total_time);
+                strategija_3(studentai, nuskriaustukai, total_time);
+
+                cout << fixed << setprecision(3);
+                cout << endl << "Visos programos veikimas su Vector klase: " << total_time << " s\n" << endl;
+
             }
             else {
-            cout << "Neteisingas pasirinkimas! Įveskite skaičių 1 - 9.\n" << endl;
-        }
+            cout << "Neteisingas pasirinkimas! Įveskite skaičių 1 - 15.\n" << endl;
+        } 
     }
 
     while (true) {
