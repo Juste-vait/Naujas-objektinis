@@ -1,5 +1,11 @@
 v3.0
 
+Visos programos veikimo laikas std::vector ir Vector klasei:
+![B4484FC1-C866-481A-BF76-818195BF3574_4_5005_c](https://github.com/user-attachments/assets/93ba1edb-6cc6-4efc-914e-0424e7540a27)
+
+
+
+
 Realokacijų skaičius vienodas std::vector ir Vector klasei:
 ![31D1F6D8-3132-4675-B0C9-5E1F9D61933A_4_5005_c](https://github.com/user-attachments/assets/fd514389-8109-4b25-92b7-52d82a512261)
 
