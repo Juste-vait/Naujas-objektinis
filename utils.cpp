@@ -234,21 +234,31 @@ void test_vector_push_back(unsigned int sz) {
     // std::vector testas
     {
         std::vector<int> v1;
+        int realloc_count = 0;
         auto start = std::chrono::high_resolution_clock::now();
-        for (unsigned int i = 1; i <= sz; ++i) v1.push_back(i);
+        for (unsigned int i = 1; i <= sz; ++i) {
+            if (v1.size() == v1.capacity()) realloc_count++;
+            v1.push_back(i);
+        }
         auto end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> duration = end - start;
         cout << "std::vector užtruko: " << duration.count() << " s\n";
+        cout << "std::vector realokacijų skaičius: " << realloc_count << "\n";
     }
 
     // klasės Vector testas
     {
         Vector<int> v2;
+        int realloc_count = 0;
         auto start = std::chrono::high_resolution_clock::now();
-        for (unsigned int i = 1; i <= sz; ++i) v2.push_back(i);
+        for (unsigned int i = 1; i <= sz; ++i) {
+            if (v2.size() == v2.capacity()) realloc_count++;
+            v2.push_back(i);
+        }
         auto end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> duration = end - start;
         cout << "klasė Vector užtruko: " << duration.count() << " s\n";
+        cout << "klasės Vector realokacijų skaičius: " << realloc_count << "\n";
     }
 
     cout << "----------------------------------------\n";

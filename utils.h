@@ -16,7 +16,7 @@ void ivestiStudenta(Vector<Studentas>& studentai);
 void generuotiStudentus(Vector<Studentas>& studentai);
 
 template <typename konteineris>
-void nuskaitytiIsFailo(konteineris &studentai) {
+void nuskaitytiIsFailo(konteineris &studentai, double& total_time) {
     string failoPavadinimas;
     ifstream failas;
 
@@ -58,10 +58,11 @@ void nuskaitytiIsFailo(konteineris &studentai) {
     auto trukme = duration_cast<duration<double>>(end - start);
     cout << fixed << setprecision(3);
     cout << "Duomenų nuskaitymas užtruko: " << trukme.count() << " s\n" << endl;
+    total_time = total_time + trukme.count();
 }
 
 template <typename konteineris>
-void rusiuotiStudentus(konteineris &studentai){
+void rusiuotiStudentus(konteineris &studentai, double& total_time){
 
     int rusiavimoPasirinkimas;
 
@@ -119,10 +120,11 @@ void rusiuotiStudentus(konteineris &studentai){
     auto trukme = duration_cast<duration<double>>(end - start);
     cout << fixed << setprecision(3);
     cout << "Rikiavimas užtruko: " << trukme.count() << " s\n" << endl;
+    total_time = total_time + trukme.count();
 }
 
 template <typename konteineris>
-void strategija_3(konteineris& studentai, konteineris& nuskriaustukai) {
+void strategija_3(konteineris& studentai, konteineris& nuskriaustukai, double& total_time) {
 
     char grupavimoPasirinkimas;
     Studentas stud;
@@ -167,6 +169,7 @@ void strategija_3(konteineris& studentai, konteineris& nuskriaustukai) {
     auto trukme = duration_cast<duration<double>>(end - start);
     cout << fixed << setprecision(3);
     cout << "3 strategija užtruko: " << trukme.count() << " s\n" << endl;
+    total_time = total_time + trukme.count();
 }
 
 template <typename konteineris>
